@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workspace Video Player — Emily Thomas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      color: #8b8989;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* — Nav — */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 50px 60px;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 100;
+    }
+    .logo {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      color: #222;
+      text-decoration: none;
+    }
+    header nav a {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #222;
+      text-decoration: none;
+      margin-left: 30px;
+    }
+    header nav a:hover { opacity: 0.6; }
+
+    /* — Main content — */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 30px 100px;
+    }
+
+    /* — Hero — */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+    .hero h1 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .hero .subtitle {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+    .hero .links {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+    }
+    .hero .links a {
+      color: #c799d1;
+      text-decoration: none;
+    }
+    .hero .links a:hover { opacity: 0.7; }
+    .hero .links .divider {
+      color: #333;
+      margin: 0 8px;
+    }
+
+    /* — Two-column section layout — */
+    .section {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .section-label {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #8b8989;
+      padding-top: 3px;
+    }
+    .section-label .sub-heading {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #555;
+      margin-top: 8px;
+    }
+    .section-body {}
+
+    /* — Body text — */
+    .body-text {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .body-text:last-child { margin-bottom: 0; }
+    .body-text a { color: #c799d1; }
+
+    /* — Bullet lists — */
+    .bullet-list {
+      list-style: disc;
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    .bullet-list li {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    /* — Divider — */
+    .divider-line {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 48px 0;
+    }
+
+    /* — Images — */
+    .visual {
+      margin: 48px 0;
+    }
+    .visual img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+    }
+    .visual .caption {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+      font-size: 12px;
+      color: #8b8989;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* — Hover comparison — */
+    .visual-pair {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      margin: 48px 0;
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 40px;
+    }
+    .visual-pair .pair-item {
+      flex: 1;
+      text-align: center;
+    }
+    .visual-pair img {
+      width: 100%;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .visual-pair .pair-label {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+      font-size: 13px;
+      color: #333;
+    }
+
+    /* — Quote — */
+    .quote {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+      font-size: 15px;
+      font-style: italic;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      padding-left: 20px;
+      border-left: 3px solid #c799d1;
+    }
+
+    /* — Metrics highlight — */
+    .metrics {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #c799d1;
+      letter-spacing: 0.5px;
+      margin-top: 16px;
+    }
+
+    /* — Team grid — */
+    .team-list {
+      list-style: none;
+    }
+    .team-list li {
+      font-family: proxima-nova, 'Proxima Nova', system-ui, sans-serif;
+      font-size: 15px;
+      color: #333;
+      line-height: 1.8;
+    }
+    .team-list li strong {
+      font-weight: 600;
+    }
+
+    /* — Footer — */
+    footer {
+      text-align: center;
+      padding: 80px 30px 40px;
+    }
+    footer .tagline {
+      font-family: 'EB Garamond', serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: #333;
+      margin-bottom: 60px;
+      line-height: 1.3;
+    }
+    footer nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 24px;
+    }
+    footer nav a {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #222;
+      text-decoration: none;
+    }
+    footer nav a:hover { opacity: 0.6; }
+
+    /* — Responsive — */
+    @media (max-width: 768px) {
+      header { padding: 30px 20px; }
+      main { padding: 0 20px 60px; }
+      .hero { padding: 40px 0 30px; }
+      .section {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .visual-pair { flex-direction: column; padding: 24px; }
+      footer .tagline { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <header>
+    <a href="#" class="logo">Emily Thomas</a>
+    <nav>
+      <a href="#">Work</a>
+      <a href="#">About Emily</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>Workspace Video Player</h1>
+      <p class="subtitle">Modernize and standardize the video playback experience as part of a Google Workspace video primitive effort</p>
+      <p class="links">
+        <a href="#">See my process</a>
+        <span class="divider">|</span>
+        <a href="https://drive.google.com/file/d/1aZBSr1OkHBHw9W3PRzsyov0KjgDjKji5/view?usp=drive_link&resourcekey=0-MWPZGdART5GhEfYlWfQYyw">Use it</a>
+      </p>
+    </div>
+
+    <!-- Overview -->
+    <div class="section">
+      <div class="section-label">Overview</div>
+      <div class="section-body">
+        <p class="body-text">Google Workspace had a video primitive to power video experiences across our products — encompassing video recording, editing, sharing, and playback. The goal was to ensure a cohesive experience for our users, accelerate innovation across our product teams, and build for the future of work.</p>
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div class="section">
+      <div class="section-label">UX Lead</div>
+      <div class="section-body">
+        <ul class="bullet-list">
+          <li>Defined a multi-year UX Video Playback Strategy to modernize the Workspace Playback experience — UI refresh was the first project</li>
+          <li>Successfully secured buy-in from Workspace leads to prioritize a visual update ahead of other critical features</li>
+          <li>Drove alignment across Workspace team to ensure we built a scalable system</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Impact -->
+    <div class="section">
+      <div class="section-label">Impact</div>
+      <div class="section-body">
+        <p class="body-text">Collaborated with designers across Workspace, I contributed to, led and directed the delivery of 9 major features, resulting in:</p>
+        <ul class="bullet-list">
+          <li>~84M weekly views</li>
+          <li>Increase CSAT from 56% to 75%</li>
+          <li>Decreased DSAT from 21% to 15%</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Hero Visual: Drive logo + main player GIF -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1752110932884-NHUY5IGBPMFBMEFORZSM/drive_logo.png?format=1500w" alt="Google Drive logo">
+    </div>
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751480004731-EOEMEMQLNBL2V0FOU9E5/video.gif?format=1500w" alt="Video player interaction demo">
+    </div>
+
+    <hr class="divider-line">
+
+    <!-- Context -->
+    <div class="section">
+      <div class="section-label">Context</div>
+      <div class="section-body">
+        <p class="body-text">Workspace has a video primitive to power the video experiences across Google Workspace. The Editors create a new video editing tool (Vids), Meet is improving their asynchronous meeting experience, and Drive is updating the video player to better support all cross-product journeys. These updates are all part of Workspace's effort to make video a more seamless and integrated part of Google Workspace.</p>
+      </div>
+    </div>
+
+    <!-- Research -->
+    <div class="section">
+      <div class="section-label">Research</div>
+      <div class="section-body">
+        <p class="body-text">Users were not satisfied with the current playback experience</p>
+        <p class="body-text">76% of users expressed frustration due to:</p>
+        <ul class="bullet-list">
+          <li>Reliability buffering, processing latency</li>
+          <li>Looking like YouTube confuses users</li>
+          <li>Feature discoverability</li>
+        </ul>
+        <p class="metrics">CSAT 56% &bull; DSAT 30%</p>
+        <div class="quote" style="margin-top: 24px;">"Looks like YouTube but doesn't entirely behave like it"</div>
+      </div>
+    </div>
+
+    <!-- Responsive mockups visual -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751475639047-Q7VROD9YLK4OU0DSZP12/Screenshot+2025-07-02+at+11.00.15%E2%80%AFAM.png?format=1500w" alt="Video player across devices - phone, tablet, desktop">
+    </div>
+
+    <hr class="divider-line">
+
+    <!-- Problems -->
+    <div class="section">
+      <div class="section-label">Problems</div>
+      <div class="section-body">
+        <p class="body-text">Because the Workspace player looked like YouTube, users expected it to act like YouTube</p>
+        <p class="body-text">However, the underlying API lacked essential features—specifically chapters and preview scrubbing—with no roadmap for improvement</p>
+        <p class="body-text">The player was dated and didn't align GM3 standards, creating a disjointed user experience</p>
+        <p class="body-text">Plus, Google Vids was creating a player that diverged from the Drive experience</p>
+      </div>
+    </div>
+
+    <!-- Old player screenshot -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/b0374627-b2b7-41bd-bf9a-f49e991a5a60/Screenshot+2025-07-02+at+2.58.18%E2%80%AFPM.png" alt="The existing video player — resembled YouTube, confusing users">
+    </div>
+
+    <!-- Opportunity -->
+    <div class="section">
+      <div class="section-label">Opportunity</div>
+      <div class="section-body">
+        <p class="body-text">I recognized this user pain point and successfully secured buy-in from Workspace leads to prioritize a visual update ahead of other critical features</p>
+        <p class="body-text">Ensuring dedicated resource allocation and cross-product alignment</p>
+      </div>
+    </div>
+
+    <!-- Goal -->
+    <div class="section">
+      <div class="section-label">Goal</div>
+      <div class="section-body">
+        <p class="body-text">Make video a hero journey across Workspace by delivering a unified async video experience</p>
+      </div>
+    </div>
+
+    <hr class="divider-line">
+
+    <!-- Approach: Building the Foundation -->
+    <div class="section">
+      <div class="section-label">
+        Approach
+        <span class="sub-heading">Building the Foundation</span>
+      </div>
+      <div class="section-body">
+        <p class="body-text">My initial approach focused on establishing the framework for the new player. <strong>I defined the foundational components, building blocks, and interactions.</strong></p>
+      </div>
+    </div>
+
+    <!-- Foundation process images -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/a701d573-789e-4b97-8ce3-47933cea4110/video+process+1.png" alt="Type of players — large and small player definitions">
+    </div>
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/d486fabf-0fbc-4c1e-a269-06f5120e112b/video+process+2.png" alt="Large player anatomy — controls, timeline, and feature mapping">
+    </div>
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/d2b5a5be-7c7a-41f3-87d8-c496b182e13e/video+process+3.png" alt="Small player anatomy — minimal controls and hover behavior">
+    </div>
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/d05472ce-b512-40cd-b42a-6ab52df2c638/video+process+4.png" alt="Building blocks — icons, controls, scrubbers, and UI components">
+    </div>
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/05e8d1f8-f5ba-4370-a715-8071d4dcb381/video+process+5.png" alt="Volume control — levels, interactions, and responsive behavior">
+    </div>
+
+    <!-- Hover states visual -->
+    <div class="visual-pair">
+      <div class="pair-item">
+        <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751477465546-DZ0F4H32CA46VLSO5SW2/Hover.gif?format=750w" alt="Video player resting state">
+        <p class="pair-label">Resting</p>
+      </div>
+      <div class="pair-item">
+        <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751477465546-DZ0F4H32CA46VLSO5SW2/Hover.gif?format=750w" alt="Video player on hover state">
+        <p class="pair-label">On hover</p>
+      </div>
+    </div>
+
+    <!-- Competitive Analysis -->
+    <div class="section">
+      <div class="section-label">
+        <span class="sub-heading">Competitive Analysis</span>
+      </div>
+      <div class="section-body">
+        <p class="body-text">We conducted a competitive analysis to understand feature gaps and industry standard patterns.</p>
+      </div>
+    </div>
+
+    <!-- Competitive analysis visuals -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/541e019c-43c2-48bb-93a8-cf7358c00c90/Screenshot+2025-01-20+at+5.03.38%E2%80%AFPM.png" alt="Competitive analysis — design brainstorm and feature exploration board">
+    </div>
+
+    <!-- Design Jam -->
+    <div class="section">
+      <div class="section-label">
+        <span class="sub-heading">Cross-Workspace Design Jam</span>
+      </div>
+      <div class="section-body">
+        <p class="body-text">I organized and co-facilitated visual design brainstorm sessions to drive alignment and foster collaboration across Drive, Vids, Workspace Design Systems, and Meet.</p>
+      </div>
+    </div>
+
+    <!-- Design Jam visuals -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/e10179cc-dfc7-4661-a6e1-d6f6d0be910d/Screenshot+2025-01-20+at+5.05.25%E2%80%AFPM.png" alt="Cross-Workspace design jam — competitive landscape and video player references">
+    </div>
+
+    <!-- Direction selection -->
+    <div class="section">
+      <div class="section-label">
+        <span class="sub-heading">Direction</span>
+      </div>
+      <div class="section-body">
+        <p class="body-text">Our team defined two directions and wanted to move forward with <strong>Direction 1.</strong></p>
+      </div>
+    </div>
+
+    <!-- Two directions comparison -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/ef4035d6-8b79-40f6-9569-97127bfc2ade/two+directions.png" alt="Direction 1 (contained timeline and controls) vs Direction 2 (open timeline)">
+      <p class="caption">Direction 1 — Contained timeline and controls &nbsp;&nbsp;|&nbsp;&nbsp; Direction 2 — Open timeline</p>
+    </div>
+
+    <!-- 4-up detail grid visual -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751477332406-MUI4C41Z4PY9ATYDZOAX/4+up.gif?format=1500w" alt="Video player UI details - settings, timeline, volume, chapters">
+    </div>
+
+    <hr class="divider-line">
+
+    <!-- Prototype -->
+    <div class="section">
+      <div class="section-label">Prototype</div>
+      <div class="section-body">
+        <p class="body-text">I created a <a href="https://www.figma.com/proto/VDtKjm25iNme6GOOpy1vPH/Proto---Visual-updates?page-id=418%3A713&node-id=435-28985&p=f&viewport=435%2C741%2C0.1&t=f2asFwJU0yE9DDT0-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=435%3A17756">prototype</a> to evaluate the usability of Direction 1.</p>
+      </div>
+    </div>
+
+    <!-- Prototype screenshot -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/80689afd-d399-47b9-95ca-f48676133807/Screenshot+2025-07-13+at+2.44.03%E2%80%AFPM.png" alt="Prototype of the new video player in Google Drive context">
+    </div>
+
+    <!-- Findings -->
+    <div class="section">
+      <div class="section-label">Findings</div>
+      <div class="section-body">
+        <p class="body-text">The findings were positive.</p>
+        <ul class="bullet-list">
+          <li>Majority of the users liked the new direction of the video player! And thought it looked "modern" and "sleek"</li>
+          <li>Creators were agnostic about the appearance and care more about collaboration and performance</li>
+          <li>Some felt the controls gets in the way of the video</li>
+          <li>Nearly a third of the participants mentioned the new design had some form of familiarity to Apple and its video player on Mac</li>
+          <li>The video hover preview on Drive was a hit!</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Design Sprint -->
+    <div class="section">
+      <div class="section-label">
+        <span class="sub-heading">Design Sprint</span>
+      </div>
+      <div class="section-body">
+        <p class="body-text">Our team wanted to move forward with Direction 1, but I hypothesized that wouldn't scale. As a result, I organized and facilitated a cross-Workspace design sprint to ensure the new design worked well with upcoming features impacting the video player:</p>
+        <ul class="bullet-list">
+          <li>Chapters</li>
+          <li>Comments</li>
+          <li>Reactions</li>
+        </ul>
+        <p class="body-text">As we explored and evaluated these journeys during the sprint, we discovered issues with the timeline and decided to remove it from the container.</p>
+      </div>
+    </div>
+
+    <!-- Design sprint comparison -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/0a3340a9-0ed4-4193-9be9-17ed1908b186/Screenshot+2026-02-09+at+7.56.59%E2%80%AFPM.png" alt="Design sprint outcome — pivoting from contained to open timeline">
+    </div>
+
+    <!-- What we learned -->
+    <div class="section">
+      <div class="section-label">
+        <span class="sub-heading">What We Learned</span>
+      </div>
+      <div class="section-body">
+        <p class="body-text">We learned that the alternative direction was better suited for upcoming features. We secured leadership buy-in to pivot direction.</p>
+      </div>
+    </div>
+
+    <!-- What we learned diagram -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/2fc533b5-42a6-48b8-8b25-dbd9d9381ded/Screenshot+2025-01-19+at+11.03.27%E2%80%AFAM.png" alt="What we learned — Better UX, User preference, More Responsive, Align Visual Design, More scalable">
+    </div>
+
+    <!-- Principles -->
+    <div class="section">
+      <div class="section-label">Defined Principles</div>
+      <div class="section-body">
+        <ul class="bullet-list">
+          <li><strong>Uniquely Workspace</strong> — Not YouTube! GM3</li>
+          <li><strong>Adaptable Interface</strong> — Same atoms everywhere, responsive to every device</li>
+          <li><strong>Video first = user first</strong> — UI restructure to put video first, improved accessibility</li>
+          <li><strong>Empower collaboration &amp; productivity</strong> — Comments &amp; Chapters</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Final composite visual -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751381056112-FGQWWCHKUKKL3OYD1X8J/04.png?format=1500w" alt="Final video player designs across contexts - chapters, PiP, multi-device">
+    </div>
+
+    <hr class="divider-line">
+
+    <!-- Refine -->
+    <div class="section">
+      <div class="section-label">Refine</div>
+      <div class="section-body">
+        <p class="body-text">We moved forward with the open timeline and refined the visual and motion design.</p>
+      </div>
+    </div>
+
+    <!-- Refined design GIF -->
+    <div class="visual">
+      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/c2786fc1-2c4f-45cb-b738-499e7890dd10/4+up.gif" alt="Refined video player — settings, playback, volume, and chapter interactions">
+    </div>
+
+    <!-- Post-launch metrics -->
+    <div class="section">
+      <div class="section-label">Post-Launch Metrics</div>
+      <div class="section-body">
+        <ul class="bullet-list">
+          <li>Satisfaction stays the same</li>
+          <li>Dissatisfaction decreases by 10%</li>
+          <li>Perception of modernity went up 20%</li>
+          <li>No increase in latency</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- User quotes -->
+    <div class="section">
+      <div class="section-label">What People Said</div>
+      <div class="section-body">
+        <div class="quote">"I have a good experience with viewing videos in Drive of late. In fact, I like the new update, the look, especially with the function of letting you pick the playback speed"</div>
+        <div class="quote">"The service has been impeccable lately! This player looks so cool. Keep going!"</div>
+        <div class="quote">"I like it! It's not like YouTube anymore; I think it works better and it reflects a new personality, is modern, and could improve the experience for users. I really like it—good job!"</div>
+      </div>
+    </div>
+
+    <hr class="divider-line">
+
+    <!-- Team -->
+    <div class="section">
+      <div class="section-label">Team</div>
+      <div class="section-body">
+        <ul class="team-list">
+          <li><strong>UX Lead</strong> — Emily Thomas</li>
+          <li><strong>Visual Designers</strong> — Yong Kim (WS Design System), Zo&euml; Knight (Drive)</li>
+          <li><strong>UXE &amp; Motion Designer</strong> — Josh Greco (Drive)</li>
+          <li><strong>Interaction Designers</strong> — Dan Littlewood (Meet), Nida Hameed (Editors), Ron Zhang (Drive Mobile)</li>
+          <li><strong>Research</strong> — Prasanna Muthukumar</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p class="tagline">I'm a product designer living and working in Boulder</p>
+    <nav>
+      <a href="#">Drive GenAI Organize</a>
+      <a href="#">Workspace Video Player</a>
+      <a href="#">Gemini + Video</a>
+      <a href="#">Workspace PDF</a>
+      <a href="#">Lemonaid</a>
+      <a href="#">Lemonaid PIMS</a>
+      <a href="#">Planned Parenthood</a>
+      <a href="#">BrightScope Beacon</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
