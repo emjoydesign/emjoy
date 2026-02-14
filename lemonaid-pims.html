@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lemonaid PIMS — Emily Thomas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#c799d1',
+            body: '#333',
+            muted: '#8b8989',
+            divider: '#e0e0e0',
+          },
+          fontFamily: {
+            sans: ['proxima-nova', 'Proxima Nova', 'system-ui', '-apple-system', 'sans-serif'],
+            heading: ['"Open Sans"', 'sans-serif'],
+            serif: ['"EB Garamond"', 'serif'],
+            nav: ['"Lato"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply font-sans text-[15px] text-muted bg-white antialiased;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <header class="flex justify-between items-center px-[60px] py-[50px] sticky top-0 bg-white z-50 max-md:px-5 max-md:py-[30px]">
+    <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
+    <nav>
+      <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
+      <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Emily</a>
+    </nav>
+  </header>
+
+  <main class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
+
+    <!-- Hero -->
+    <div class="text-center pt-20 pb-[60px] max-md:pt-10 max-md:pb-[30px]">
+      <h1 class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-body mb-5">Lemonaid PIMS</h1>
+      <p class="text-lg font-normal text-body leading-relaxed max-w-[600px] mx-auto mb-6">PIMS (Patient Information Management Systems) is the platform the Lemonaid doctors used to review and prescribe patient health care request.</p>
+      <p class="text-lg font-normal">
+        <a href="#process" class="text-accent no-underline hover:opacity-70">See my process</a>
+      </p>
+    </div>
+
+    <!-- Overview -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Overview</div>
+      <div>
+        <p class="text-[15px] text-body leading-[1.7] mb-3">PIMS (Patient Information Management Systems) is the platform the Lemonaid doctors used to review and prescribe patient health care requests. As the sole designer, I was responsible for designing the entire doctor-facing platform.</p>
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">My Role</div>
+      <div>
+        <ul class="list-disc pl-5 mb-3">
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Sole designer for the doctor-facing platform</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Designed end-to-end patient review and prescription workflows</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Worked directly with physicians to understand clinical needs</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Built a system that streamlined the consultation process</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="border-t border-divider my-12" id="process">
+
+    <!-- Context -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Context</div>
+      <div>
+        <p class="text-[15px] text-body leading-[1.7] mb-3">Lemonaid Health needed an internal tool that allowed doctors to efficiently review patient questionnaires, make clinical decisions, and prescribe medications — all within a streamlined digital workflow.</p>
+      </div>
+    </div>
+
+    <!-- Problem -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Problem</div>
+      <div>
+        <ul class="list-disc pl-5 mb-3">
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Doctors spent too much time navigating between patient records</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">The existing system lacked structure for efficient clinical decision-making</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">No standardized workflow for reviewing and prescribing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Goal -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Goal</div>
+      <div>
+        <p class="text-[15px] text-body leading-[1.7] mb-3">Create a unified platform that enables doctors to review patient information, make clinical decisions, and prescribe treatments efficiently and accurately.</p>
+      </div>
+    </div>
+
+    <!-- Approach -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Approach</div>
+      <div>
+        <p class="text-[15px] text-body leading-[1.7] mb-3">I worked closely with Lemonaid's medical team to understand their clinical workflows, then designed a system that mirrored their decision-making process digitally.</p>
+        <ul class="list-disc pl-5 mb-3">
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Shadowed doctors during patient consultations</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Mapped clinical decision trees</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Designed modular patient review interfaces</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Built prescription workflow with safety checks</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Outcome -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Outcome</div>
+      <div>
+        <ul class="list-disc pl-5 mb-3">
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Streamlined the doctor review process</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Reduced average consultation time</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Improved prescription accuracy through built-in safeguards</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center px-[30px] pt-20 pb-10">
+    <p class="font-serif text-5xl font-normal text-body mb-[60px] leading-[1.3] max-md:text-[32px]">I'm a product designer living and working in Boulder</p>
+    <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
+      <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
+      <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>
+      <a href="gemini-video.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Gemini + Video</a>
+      <a href="workspace-pdf.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace PDF</a>
+      <a href="lemonaid.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid</a>
+      <a href="lemonaid-pims.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid PIMS</a>
+      <a href="planned-parenthood.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Planned Parenthood</a>
+      <a href="brightscope.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">BrightScope Beacon</a>
+    </nav>
+  </footer>
+
+</body>
+</html>

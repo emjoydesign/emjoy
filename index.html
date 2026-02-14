@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emily Thomas — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#c799d1',
+            body: '#333',
+            muted: '#8b8989',
+            divider: '#e0e0e0',
+          },
+          fontFamily: {
+            sans: ['proxima-nova', 'Proxima Nova', 'system-ui', '-apple-system', 'sans-serif'],
+            heading: ['"Open Sans"', 'sans-serif'],
+            serif: ['"EB Garamond"', 'serif'],
+            nav: ['"Lato"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply font-sans text-[15px] text-muted bg-white antialiased;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Nav -->
+  <header class="flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
+    <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
+    <nav>
+      <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
+      <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Emily</a>
+    </nav>
+  </header>
+
+  <!-- Hero + Footer combined (matches Squarespace home) -->
+  <main class="flex-1 flex flex-col items-center justify-center text-center px-[30px]">
+    <p class="font-serif text-[72px] font-normal text-body leading-[1.2] max-w-[900px] mb-[80px] max-md:text-[40px] max-md:mb-[50px]">I'm a product designer living and working in Boulder</p>
+    <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
+      <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
+      <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>
+      <a href="gemini-video.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Gemini + Video</a>
+      <a href="workspace-pdf.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace PDF</a>
+      <a href="lemonaid.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid</a>
+      <a href="lemonaid-pims.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid PIMS</a>
+      <a href="planned-parenthood.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Planned Parenthood</a>
+      <a href="brightscope.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">BrightScope Beacon</a>
+    </nav>
+  </main>
+
+  <div class="pb-10"></div>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planned Parenthood — Emily Thomas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#c799d1',
+            body: '#333',
+            muted: '#8b8989',
+            divider: '#e0e0e0',
+          },
+          fontFamily: {
+            sans: ['proxima-nova', 'Proxima Nova', 'system-ui', '-apple-system', 'sans-serif'],
+            heading: ['"Open Sans"', 'sans-serif'],
+            serif: ['"EB Garamond"', 'serif'],
+            nav: ['"Lato"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply font-sans text-[15px] text-muted bg-white antialiased;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <header class="flex justify-between items-center px-[60px] py-[50px] sticky top-0 bg-white z-50 max-md:px-5 max-md:py-[30px]">
+    <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
+    <nav>
+      <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
+      <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Emily</a>
+    </nav>
+  </header>
+
+  <main class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
+
+    <!-- Hero -->
+    <div class="text-center pt-20 pb-[60px] max-md:pt-10 max-md:pb-[30px]">
+      <h1 class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-body mb-5">Planned Parenthood</h1>
+      <p class="text-lg font-normal text-body leading-relaxed max-w-[600px] mx-auto mb-6">Lemonaid partnered with Planned Parenthood to create an iOS and Android app that provides patients with birth control prescriptions, UTI treatment, and STD testing.</p>
+      <p class="text-lg font-normal">
+        <a href="#process" class="text-accent no-underline hover:opacity-70">See my process</a>
+        <span class="text-body mx-2">|</span>
+        <a href="#" class="text-accent no-underline hover:opacity-70">Download App</a>
+      </p>
+    </div>
+
+    <!-- Overview -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Overview</div>
+      <div>
+        <p class="text-[15px] text-body leading-[1.7] mb-3">Lemonaid partnered with Planned Parenthood to create an iOS and Android app that provides patients with birth control prescriptions, UTI treatment, and STD testing. This partnership aimed to expand access to reproductive healthcare through technology.</p>
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">My Role</div>
+      <div>
+        <ul class="list-disc pl-5 mb-3">
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Led product design for the Planned Parenthood mobile application</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Designed the patient intake and consultation flow</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Ensured HIPAA compliance in all user-facing interfaces</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Collaborated with Planned Parenthood's clinical team on medical workflows</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="border-t border-divider my-12" id="process">
+
+    <!-- Context -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Context</div>
+      <div>
+        <p class="text-[15px] text-body leading-[1.7] mb-3">Planned Parenthood wanted to expand access to healthcare services through a digital platform. Lemonaid's telehealth infrastructure provided the technical foundation, while Planned Parenthood brought trusted brand recognition and clinical expertise.</p>
+      </div>
+    </div>
+
+    <!-- Problem -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Problem</div>
+      <div>
+        <ul class="list-disc pl-5 mb-3">
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Many patients face barriers to accessing reproductive healthcare in person</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Stigma prevents some patients from seeking care</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Geographic limitations restrict access in rural areas</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Goal -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Goal</div>
+      <div>
+        <p class="text-[15px] text-body leading-[1.7] mb-3">Make reproductive healthcare accessible to anyone with a smartphone, providing a private, convenient, and affordable path to care.</p>
+      </div>
+    </div>
+
+    <!-- Approach -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Approach</div>
+      <div>
+        <p class="text-[15px] text-body leading-[1.7] mb-3">I designed the app experience to feel approachable and trustworthy while meeting strict medical and privacy requirements.</p>
+        <ul class="list-disc pl-5 mb-3">
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Designed welcoming onboarding that reduced patient anxiety</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Built clear, simple medical questionnaire flows</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Created pharmacy selection and prescription tracking interfaces</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Ensured accessibility compliance throughout</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Outcome -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 mb-12 max-md:grid-cols-1 max-md:gap-2">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pt-[3px]">Outcome</div>
+      <div>
+        <ul class="list-disc pl-5 mb-3">
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Successfully launched on iOS and Android</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Expanded access to reproductive healthcare services</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Maintained high patient satisfaction scores</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center px-[30px] pt-20 pb-10">
+    <p class="font-serif text-5xl font-normal text-body mb-[60px] leading-[1.3] max-md:text-[32px]">I'm a product designer living and working in Boulder</p>
+    <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
+      <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
+      <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>
+      <a href="gemini-video.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Gemini + Video</a>
+      <a href="workspace-pdf.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace PDF</a>
+      <a href="lemonaid.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid</a>
+      <a href="lemonaid-pims.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid PIMS</a>
+      <a href="planned-parenthood.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Planned Parenthood</a>
+      <a href="brightscope.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">BrightScope Beacon</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
