@@ -29,6 +29,9 @@
     }
   </script>
   <style type="text/tailwindcss">
+    html {
+      scroll-behavior: smooth;
+    }
     @layer base {
       body {
         @apply font-sans text-[15px] text-muted bg-white antialiased;
@@ -38,30 +41,52 @@
 </head>
 <body>
 
-  <!-- Nav -->
-  <header class="flex justify-between items-center px-[60px] py-[50px] sticky top-0 bg-white z-50 max-md:px-5 max-md:py-[30px]">
-    <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
-    <nav>
-      <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
-      <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Emily</a>
-    </nav>
-  </header>
+  <!-- Full-Screen Hero -->
+  <section class="h-screen bg-[#34495e] flex flex-col relative">
+    <!-- Nav -->
+    <header class="flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
+      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
+      <nav>
+        <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">About Emily</a>
+      </nav>
+    </header>
+    <!-- Hero Content -->
+    <div class="flex-1 flex items-center px-[60px] max-md:px-5">
+      <div class="max-w-[1100px] mx-auto w-full grid grid-cols-2 gap-16 items-center max-md:grid-cols-1">
+        <!-- Text -->
+        <div>
+          <p class="font-heading text-[13px] font-bold tracking-[1.5px] uppercase text-white/60 mb-4">Google</p>
+          <h1 class="font-serif text-[56px] font-normal text-white leading-[1.15] max-md:text-[36px]">Workspace PDF</h1>
+        </div>
+        <!-- Image Placeholder -->
+        <div class="aspect-[4/3] rounded-lg bg-white/10 flex items-center justify-center max-md:hidden">
+          <p class="text-white/30 text-sm">Image coming soon</p>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll Arrow -->
+    <div class="pb-10 flex justify-center">
+      <a href="#content" class="text-white/60 hover:text-white transition-colors">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </a>
+    </div>
+  </section>
 
-  <main class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
+  <main id="content" class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
 
-    <!-- Hero -->
+    <!-- Intro -->
     <div class="text-center pt-20 pb-[60px] max-md:pt-10 max-md:pb-[30px]">
-      <h1 class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-body mb-5">Workspace PDF</h1>
       <p class="text-lg font-normal text-body leading-relaxed max-w-[600px] mx-auto mb-6">Workspace PDF Improvements</p>
       <p class="text-lg font-normal">
-        <a href="#process" class="text-accent no-underline hover:opacity-70">See my process</a>
-        <span class="text-body mx-2">|</span>
         <a href="https://drive.google.com/file/d/1FowgYePZzGFKouRD_EZ3wqeXrVXJqf41/view?usp=sharing" class="text-accent no-underline hover:opacity-70">Try it</a>
       </p>
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1752110992039-UFL8NQIEFRJVM1MSSBY1/drive_logo.png?format=1500w" alt="Google Drive logo" class="w-full block rounded">
+      <img src="images/workspace-pdf/drive_logo.png" alt="Google Drive logo" class="w-full block rounded">
     </div>
 
     <!-- Overview -->
@@ -99,19 +124,19 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1752115493651-LTB330PM97PXHZ10ZT4C/PDF+Today.png?format=1500w" alt="PDF experience today" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+Today.png" alt="PDF experience today" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1752113495119-PTN2ASVBX7CQCF8P9HEQ/PDF+1.png?format=1500w" alt="PDF improvement design 1" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+1.png" alt="PDF improvement design 1" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1752113501625-CAM39038VHQ30U3QRX7M/PDF+2.png?format=1500w" alt="PDF improvement design 2" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+2.png" alt="PDF improvement design 2" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1752112889154-YV4OUPLK6VHDL03UHRHT/PDF+Details.png?format=1500w" alt="PDF feature details" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+Details.png" alt="PDF feature details" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1752112891589-WI3KH2FBPXNSA1H36LHF/PDF+menus.png?format=1500w" alt="PDF menus design" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+menus.png" alt="PDF menus design" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12" id="process">
@@ -141,7 +166,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/3da29c3f-ca00-40ca-9290-7fde6e35e309/Screenshot+2025-07-02+at+7.45.07%E2%80%AFPM.png?format=1500w" alt="Competitive audit comparison" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2025-07-02+at+7.45.07 PM.png" alt="Competitive audit comparison" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -168,7 +193,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/54557f70-5b06-40f4-b0ed-c21fd6d4f9bc/Screenshot+2025-07-02+at+7.59.17%E2%80%AFPM.png?format=1500w" alt="Taxonomy card-sorting exercise" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2025-07-02+at+7.59.17 PM.png" alt="Taxonomy card-sorting exercise" class="w-full block rounded">
     </div>
 
     <!-- Strategic Placement -->
@@ -182,7 +207,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/9bdf0ad4-77d3-4845-951a-313dfd8fd3b1/Screenshot+2025-07-02+at+8.00.45%E2%80%AFPM.png?format=1500w" alt="Strategic placement framework" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2025-07-02+at+8.00.45 PM.png" alt="Strategic placement framework" class="w-full block rounded">
     </div>
 
     <!-- Cross-Workspace Alignment -->
@@ -196,7 +221,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/ca9ea6bb-d09b-4d18-9045-91992be3662f/IA.png?format=1500w" alt="Information architecture alignment" class="w-full block rounded">
+      <img src="images/workspace-pdf/IA.png" alt="Information architecture alignment" class="w-full block rounded">
     </div>
 
     <!-- Direction -->
@@ -210,7 +235,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/15b294aa-460c-4b46-b7a4-a4d8c6a7f15c/PDF+two+options.png?format=1500w" alt="Two IA direction options" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+two+options.png" alt="Two IA direction options" class="w-full block rounded">
     </div>
 
     <!-- Defined Principles -->
@@ -222,7 +247,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/a7fc4f99-1f7b-45c5-9378-5c2fb8dc11c7/pdf+principles.png?format=1500w" alt="PDF design principles" class="w-full block rounded">
+      <img src="images/workspace-pdf/pdf+principles.png" alt="PDF design principles" class="w-full block rounded">
     </div>
 
     <!-- Unified Navigation System -->
@@ -234,7 +259,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/930a1d5b-8ee3-45e2-8245-69f821a7eacf/IA+Framework.png?format=1500w" alt="IA framework for unified navigation" class="w-full block rounded">
+      <img src="images/workspace-pdf/IA+Framework.png" alt="IA framework for unified navigation" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -251,13 +276,13 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/16a498f8-2a8d-4ea7-b1a8-1bc07ed7cf63/Toolbar.png?format=1500w" alt="Toolbar design" class="w-full block rounded">
+      <img src="images/workspace-pdf/Toolbar.png" alt="Toolbar design" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/c345e94e-5c2a-46fc-a3bb-182044326a22/Toolbars+short-term.png?format=1500w" alt="Short-term toolbar design" class="w-full block rounded">
+      <img src="images/workspace-pdf/Toolbars+short-term.png" alt="Short-term toolbar design" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/3a8c0f8e-5c67-4b24-8287-e067a74442ac/Toolbars+-+long+term.png?format=1500w" alt="Long-term toolbar vision" class="w-full block rounded">
+      <img src="images/workspace-pdf/Toolbars+-+long+term.png" alt="Long-term toolbar vision" class="w-full block rounded">
     </div>
 
     <!-- File Menus — Problem -->
@@ -276,7 +301,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/0e1f33d1-c12a-4b40-90f1-b12e1a0fb032/Menu+issues.png?format=1500w" alt="File menu issues" class="w-full block rounded">
+      <img src="images/workspace-pdf/Menu+issues.png" alt="File menu issues" class="w-full block rounded">
     </div>
 
     <!-- File Menus — Audit -->
@@ -291,10 +316,10 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/98d4b23a-f389-4df5-a3e4-ee766a03f0e2/Screenshot+2026-02-09+at+8.11.33%E2%80%AFAM.png?format=1500w" alt="File menu audit" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2026-02-09+at+8.11.33 AM.png" alt="File menu audit" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/81384d42-7b15-4ad8-8943-3a794ce14dc4/short+term+pdf.png?format=1500w" alt="Short-term PDF design" class="w-full block rounded">
+      <img src="images/workspace-pdf/short+term+pdf.png" alt="Short-term PDF design" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -334,10 +359,10 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/ae043033-dc4c-485f-83db-7ee4c7f7cfa5/Screenshot+2025-07-03+at+1.54.07%E2%80%AFPM.png?format=1500w" alt="Usability testing results" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2025-07-03+at+1.54.07 PM.png" alt="Usability testing results" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/70249dac-431a-4fe1-855f-e5f6af8defc3/save+button.gif?format=1500w" alt="Save button interaction" class="w-full block rounded">
+      <img src="images/workspace-pdf/save+button.gif" alt="Save button interaction" class="w-full block rounded">
     </div>
 
     <!-- Constraints -->
@@ -397,7 +422,6 @@
 
   <!-- Footer -->
   <footer class="text-center px-[30px] pt-20 pb-10">
-    <p class="font-serif text-5xl font-normal text-body mb-[60px] leading-[1.3] max-md:text-[32px]">I'm a product designer living and working in Boulder</p>
     <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
       <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
       <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>

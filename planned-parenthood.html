@@ -29,6 +29,9 @@
     }
   </script>
   <style type="text/tailwindcss">
+    html {
+      scroll-behavior: smooth;
+    }
     @layer base {
       body {
         @apply font-sans text-[15px] text-muted bg-white antialiased;
@@ -38,31 +41,53 @@
 </head>
 <body>
 
-  <!-- Nav -->
-  <header class="flex justify-between items-center px-[60px] py-[50px] sticky top-0 bg-white z-50 max-md:px-5 max-md:py-[30px]">
-    <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
-    <nav>
-      <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
-      <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Emily</a>
-    </nav>
-  </header>
+  <!-- Full-Screen Hero -->
+  <section class="h-screen bg-[#ff6b9d] flex flex-col relative">
+    <!-- Nav -->
+    <header class="flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
+      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
+      <nav>
+        <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">About Emily</a>
+      </nav>
+    </header>
+    <!-- Hero Content -->
+    <div class="flex-1 flex items-center px-[60px] max-md:px-5">
+      <div class="max-w-[1100px] mx-auto w-full grid grid-cols-2 gap-16 items-center max-md:grid-cols-1">
+        <!-- Text -->
+        <div>
+          <p class="font-heading text-[13px] font-bold tracking-[1.5px] uppercase text-white/60 mb-4">Planned Parenthood</p>
+          <h1 class="font-serif text-[56px] font-normal text-white leading-[1.15] max-md:text-[36px]">Mobile App</h1>
+        </div>
+        <!-- Image Placeholder -->
+        <div class="aspect-[4/3] rounded-lg bg-white/10 flex items-center justify-center max-md:hidden">
+          <p class="text-white/30 text-sm">Image coming soon</p>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll Arrow -->
+    <div class="pb-10 flex justify-center">
+      <a href="#content" class="text-white/60 hover:text-white transition-colors">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </a>
+    </div>
+  </section>
 
-  <main class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
+  <main id="content" class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
 
-    <!-- Hero -->
+    <!-- Intro -->
     <div class="text-center pt-20 pb-[60px] max-md:pt-10 max-md:pb-[30px]">
-      <h1 class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-body mb-5">Planned Parenthood</h1>
       <p class="text-lg font-normal text-body leading-relaxed max-w-[600px] mx-auto mb-6">Lemonaid partnered with Planned Parenthood to create an iOS and Android app that provides patients with birth control prescriptions, UTI treatment, and STD testing.</p>
       <p class="text-lg font-normal">
-        <a href="#process" class="text-accent no-underline hover:opacity-70">See my process</a>
-        <span class="text-body mx-2">|</span>
         <a href="#" class="text-accent no-underline hover:opacity-70">Download App</a>
       </p>
     </div>
 
     <!-- Cover Image -->
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1482336917235-SWNIZF2N8BVWC83CB8XT/pp-00.png?format=1500w" alt="Planned Parenthood app cover" class="w-full block rounded">
+      <img src="images/planned-parenthood/pp-00.png" alt="Planned Parenthood app cover" class="w-full block rounded">
     </div>
 
     <!-- Overview -->
@@ -88,7 +113,7 @@
 
     <!-- App Screens -->
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1488946258293-Q4OT7M864MTZ9IX1W30B/pp-01.png?format=1500w" alt="Planned Parenthood app screens" class="w-full block rounded">
+      <img src="images/planned-parenthood/pp-01.png" alt="Planned Parenthood app screens" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12" id="process">
@@ -137,13 +162,13 @@
 
     <!-- Process Images -->
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1491794451020-JV8F0GD5K3BCWAF18591/image-asset.png?format=1500w" alt="Planned Parenthood design process" class="w-full block rounded">
+      <img src="images/planned-parenthood/image-asset.png" alt="Planned Parenthood design process" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1495504955621-AHS2YTIVV73WXB49NEOW/image-asset.png?format=1500w" alt="Planned Parenthood user flows" class="w-full block rounded">
+      <img src="images/planned-parenthood/image-asset-14955049.png" alt="Planned Parenthood user flows" class="w-full block rounded">
     </div>
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1491794874185-6TM6JV5IXNOGPKIFMSZD/image-asset.png?format=1500w" alt="Planned Parenthood final designs" class="w-full block rounded">
+      <img src="images/planned-parenthood/image-asset-14917948.png" alt="Planned Parenthood final designs" class="w-full block rounded">
     </div>
 
     <!-- Outcome -->
@@ -162,7 +187,6 @@
 
   <!-- Footer -->
   <footer class="text-center px-[30px] pt-20 pb-10">
-    <p class="font-serif text-5xl font-normal text-body mb-[60px] leading-[1.3] max-md:text-[32px]">I'm a product designer living and working in Boulder</p>
     <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
       <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
       <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>

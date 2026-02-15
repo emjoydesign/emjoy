@@ -29,6 +29,9 @@
     }
   </script>
   <style type="text/tailwindcss">
+    html {
+      scroll-behavior: smooth;
+    }
     @layer base {
       body {
         @apply font-sans text-[15px] text-muted bg-white antialiased;
@@ -38,29 +41,50 @@
 </head>
 <body>
 
-  <!-- Nav -->
-  <header class="flex justify-between items-center px-[60px] py-[50px] sticky top-0 bg-white z-50 max-md:px-5 max-md:py-[30px]">
-    <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
-    <nav>
-      <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
-      <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Emily</a>
-    </nav>
-  </header>
+  <!-- Full-Screen Hero -->
+  <section class="h-screen bg-[#1b4332] flex flex-col relative">
+    <!-- Nav -->
+    <header class="flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
+      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
+      <nav>
+        <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">About Emily</a>
+      </nav>
+    </header>
+    <!-- Hero Content -->
+    <div class="flex-1 flex items-center px-[60px] max-md:px-5">
+      <div class="max-w-[1100px] mx-auto w-full grid grid-cols-2 gap-16 items-center max-md:grid-cols-1">
+        <!-- Text -->
+        <div>
+          <p class="font-heading text-[13px] font-bold tracking-[1.5px] uppercase text-white/60 mb-4">Lemonaid Health</p>
+          <h1 class="font-serif text-[56px] font-normal text-white leading-[1.15] max-md:text-[36px]">PIMS</h1>
+        </div>
+        <!-- Image Placeholder -->
+        <div class="aspect-[4/3] rounded-lg bg-white/10 flex items-center justify-center max-md:hidden">
+          <p class="text-white/30 text-sm">Image coming soon</p>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll Arrow -->
+    <div class="pb-10 flex justify-center">
+      <a href="#content" class="text-white/60 hover:text-white transition-colors">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </a>
+    </div>
+  </section>
 
-  <main class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
+  <main id="content" class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
 
-    <!-- Hero -->
+    <!-- Intro -->
     <div class="text-center pt-20 pb-[60px] max-md:pt-10 max-md:pb-[30px]">
-      <h1 class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-body mb-5">Lemonaid PIMS</h1>
       <p class="text-lg font-normal text-body leading-relaxed max-w-[600px] mx-auto mb-6">PIMS (Patient Information Management Systems) is the platform the Lemonaid doctors used to review and prescribe patient health care request.</p>
-      <p class="text-lg font-normal">
-        <a href="#process" class="text-accent no-underline hover:opacity-70">See my process</a>
-      </p>
     </div>
 
     <!-- Cover Image -->
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1482336873106-AO0SA4T17L318LY1J4GS/Portfolio-PIMS-00.png?format=1500w" alt="PIMS platform cover" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-00.png" alt="PIMS platform cover" class="w-full block rounded">
     </div>
 
     <!-- Overview -->
@@ -72,7 +96,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1488944591171-7DFOQ53BSWSQVIRM6FO0/Portfolio-PIMS-01.png?format=1500w" alt="PIMS platform overview" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-01.png" alt="PIMS platform overview" class="w-full block rounded">
     </div>
 
     <!-- Role -->
@@ -89,23 +113,23 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1488943521973-YEGI805BDD7V1CV7K724/Portfolio-PIMS-02.png?format=1500w" alt="PIMS interface design" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-02.png" alt="PIMS interface design" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1488943791114-I909BC0MKW7X29M6RXL5/screencapture-qa-pims-polkadoc-444-visits-9883-1474508937799.png?format=1500w" alt="PIMS visit management screen" class="w-full block rounded">
+      <img src="images/lemonaid-pims/screencapture-qa-pims-polkadoc-444-visits-9883-1474508937799.png" alt="PIMS visit management screen" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1482346107167-AYGMZTY2YVCS48J3RLD0/Portfolio-PIMS-03.png?format=1500w" alt="PIMS clinical workflow" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-03.png" alt="PIMS clinical workflow" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1482346107542-F62T5H7DEHVN4JGXWP7M/Portfolio-PIMS-04.png?format=1500w" alt="PIMS patient records" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-04.png" alt="PIMS patient records" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1482346107620-L8ULMLO4EY7PJ9UQSESM/Portfolio-PIMS-05.png?format=1500w" alt="PIMS dashboard" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-05.png" alt="PIMS dashboard" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12" id="process">
@@ -153,31 +177,31 @@
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1506534286135-PVTQ9KE6KE73RFA4W0I8/Scan+1.jpg?format=1500w" alt="PIMS early sketches and wireframes" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Scan+1.jpg" alt="PIMS early sketches and wireframes" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1491273499908-J061P1ZJKYSDAX37G3B4/PIMS-02.png?format=1500w" alt="PIMS wireframe explorations" class="w-full block rounded">
+      <img src="images/lemonaid-pims/PIMS-02.png" alt="PIMS wireframe explorations" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1491273499967-4ASHTV8TFIPU8OXPU8FZ/PIMS-03.png?format=1500w" alt="PIMS design iteration" class="w-full block rounded">
+      <img src="images/lemonaid-pims/PIMS-03.png" alt="PIMS design iteration" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1495508449450-OIN8AD6EZTLW823RDLNO/Portfolio-PIMS-01.png?format=1500w" alt="PIMS high-fidelity mockup" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-01-14955084.png" alt="PIMS high-fidelity mockup" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1495508450508-HLUNK0O6LR08E839AV2A/Portfolio-PIMS-07.png?format=1500w" alt="PIMS final design screens" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-07.png" alt="PIMS final design screens" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1495508450606-R9ZGCJJR1SBGD2UWNTKK/Portfolio-PIMS-08.png?format=1500w" alt="PIMS additional screens" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-08.png" alt="PIMS additional screens" class="w-full block rounded">
     </div>
 
     <div class="mb-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1495508451224-DFN3A6B6TBZOY0N0FTEI/Portfolio-PIMS-09.png?format=1500w" alt="PIMS completed platform" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-09.png" alt="PIMS completed platform" class="w-full block rounded">
     </div>
 
     <!-- Outcome -->
@@ -196,7 +220,6 @@
 
   <!-- Footer -->
   <footer class="text-center px-[30px] pt-20 pb-10">
-    <p class="font-serif text-5xl font-normal text-body mb-[60px] leading-[1.3] max-md:text-[32px]">I'm a product designer living and working in Boulder</p>
     <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
       <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
       <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>

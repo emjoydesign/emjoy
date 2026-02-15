@@ -29,6 +29,9 @@
     }
   </script>
   <style type="text/tailwindcss">
+    html {
+      scroll-behavior: smooth;
+    }
     @layer base {
       body {
         @apply font-sans text-[15px] text-muted bg-white antialiased;
@@ -38,24 +41,46 @@
 </head>
 <body>
 
-  <!-- Nav -->
-  <header class="flex justify-between items-center px-[60px] py-[50px] sticky top-0 bg-white z-50 max-md:px-5 max-md:py-[30px]">
-    <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
-    <nav>
-      <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
-      <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Emily</a>
-    </nav>
-  </header>
+  <!-- Full-Screen Hero -->
+  <section class="h-screen bg-[#202124] flex flex-col relative">
+    <!-- Nav -->
+    <header class="flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
+      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
+      <nav>
+        <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">About Emily</a>
+      </nav>
+    </header>
+    <!-- Hero Content -->
+    <div class="flex-1 flex items-center px-[60px] max-md:px-5">
+      <div class="max-w-[1100px] mx-auto w-full grid grid-cols-2 gap-16 items-center max-md:grid-cols-1">
+        <!-- Text -->
+        <div>
+          <p class="font-heading text-[13px] font-bold tracking-[1.5px] uppercase text-white/60 mb-4">Google</p>
+          <h1 class="font-serif text-[56px] font-normal text-white leading-[1.15] max-md:text-[36px]">Workspace Video Player</h1>
+        </div>
+        <!-- Image Placeholder -->
+        <div class="aspect-[4/3] rounded-lg bg-white/10 flex items-center justify-center max-md:hidden">
+          <p class="text-white/30 text-sm">Image coming soon</p>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll Arrow -->
+    <div class="pb-10 flex justify-center">
+      <a href="#content" class="text-white/60 hover:text-white transition-colors">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </a>
+    </div>
+  </section>
 
-  <main class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
+  <main id="content" class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
 
-    <!-- Hero -->
+    <!-- Intro -->
     <div class="text-center pt-20 pb-[60px] max-md:pt-10 max-md:pb-[30px]">
-      <h1 class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-body mb-5">Workspace Video Player</h1>
       <p class="text-lg font-normal text-body leading-relaxed max-w-[600px] mx-auto mb-6">Modernize and standardize the video playback experience as part of a Google Workspace video primitive effort</p>
       <p class="text-lg font-normal">
-        <a href="#process" class="text-accent no-underline hover:opacity-70">See my process</a>
-        <span class="text-body mx-2">|</span>
         <a href="https://drive.google.com/file/d/1aZBSr1OkHBHw9W3PRzsyov0KjgDjKji5/view?usp=drive_link&resourcekey=0-MWPZGdART5GhEfYlWfQYyw" class="text-accent no-underline hover:opacity-70">Use it</a>
       </p>
     </div>
@@ -95,10 +120,10 @@
 
     <!-- Hero Visual: Drive logo + main player GIF -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1752110932884-NHUY5IGBPMFBMEFORZSM/drive_logo.png?format=1500w" alt="Google Drive logo" class="w-full block rounded">
+      <img src="images/workspace-video-player/drive_logo.png" alt="Google Drive logo" class="w-full block rounded">
     </div>
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751480004731-EOEMEMQLNBL2V0FOU9E5/video.gif?format=1500w" alt="Video player interaction demo" class="w-full block rounded">
+      <img src="images/workspace-video-player/video.gif" alt="Video player interaction demo" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12" id="process">
@@ -129,7 +154,7 @@
 
     <!-- Responsive mockups visual -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751475639047-Q7VROD9YLK4OU0DSZP12/Screenshot+2025-07-02+at+11.00.15%E2%80%AFAM.png?format=1500w" alt="Video player across devices - phone, tablet, desktop" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-07-02+at+11.00.15 AM.png" alt="Video player across devices - phone, tablet, desktop" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -147,7 +172,7 @@
 
     <!-- Old player screenshot -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/b0374627-b2b7-41bd-bf9a-f49e991a5a60/Screenshot+2025-07-02+at+2.58.18%E2%80%AFPM.png" alt="The existing video player — resembled YouTube, confusing users" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-07-02+at+2.58.18 PM.png" alt="The existing video player — resembled YouTube, confusing users" class="w-full block rounded">
     </div>
 
     <!-- Opportunity -->
@@ -182,29 +207,29 @@
 
     <!-- Foundation process images -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/a701d573-789e-4b97-8ce3-47933cea4110/video+process+1.png" alt="Type of players — large and small player definitions" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+1.png" alt="Type of players — large and small player definitions" class="w-full block rounded">
     </div>
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/d486fabf-0fbc-4c1e-a269-06f5120e112b/video+process+2.png" alt="Large player anatomy — controls, timeline, and feature mapping" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+2.png" alt="Large player anatomy — controls, timeline, and feature mapping" class="w-full block rounded">
     </div>
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/d2b5a5be-7c7a-41f3-87d8-c496b182e13e/video+process+3.png" alt="Small player anatomy — minimal controls and hover behavior" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+3.png" alt="Small player anatomy — minimal controls and hover behavior" class="w-full block rounded">
     </div>
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/d05472ce-b512-40cd-b42a-6ab52df2c638/video+process+4.png" alt="Building blocks — icons, controls, scrubbers, and UI components" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+4.png" alt="Building blocks — icons, controls, scrubbers, and UI components" class="w-full block rounded">
     </div>
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/05e8d1f8-f5ba-4370-a715-8071d4dcb381/video+process+5.png" alt="Volume control — levels, interactions, and responsive behavior" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+5.png" alt="Volume control — levels, interactions, and responsive behavior" class="w-full block rounded">
     </div>
 
     <!-- Hover states visual -->
     <div class="flex gap-[30px] items-start my-12 bg-[#f7f7f7] rounded-lg p-10 max-md:flex-col max-md:p-6">
       <div class="flex-1 text-center">
-        <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751477465546-DZ0F4H32CA46VLSO5SW2/Hover.gif?format=750w" alt="Video player resting state" class="w-full rounded mb-3">
+        <img src="images/workspace-video-player/Hover.gif" alt="Video player resting state" class="w-full rounded mb-3">
         <p class="text-[13px] text-body">Resting</p>
       </div>
       <div class="flex-1 text-center">
-        <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751477465546-DZ0F4H32CA46VLSO5SW2/Hover.gif?format=750w" alt="Video player on hover state" class="w-full rounded mb-3">
+        <img src="images/workspace-video-player/Hover.gif" alt="Video player on hover state" class="w-full rounded mb-3">
         <p class="text-[13px] text-body">On hover</p>
       </div>
     </div>
@@ -221,7 +246,7 @@
 
     <!-- Competitive analysis visuals -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/541e019c-43c2-48bb-93a8-cf7358c00c90/Screenshot+2025-01-20+at+5.03.38%E2%80%AFPM.png" alt="Competitive analysis — design brainstorm and feature exploration board" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-01-20+at+5.03.38 PM.png" alt="Competitive analysis — design brainstorm and feature exploration board" class="w-full block rounded">
     </div>
 
     <!-- Design Jam -->
@@ -236,7 +261,7 @@
 
     <!-- Design Jam visuals -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/e10179cc-dfc7-4661-a6e1-d6f6d0be910d/Screenshot+2025-01-20+at+5.05.25%E2%80%AFPM.png" alt="Cross-Workspace design jam — competitive landscape and video player references" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-01-20+at+5.05.25 PM.png" alt="Cross-Workspace design jam — competitive landscape and video player references" class="w-full block rounded">
     </div>
 
     <!-- Direction selection -->
@@ -251,13 +276,13 @@
 
     <!-- Two directions comparison -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/ef4035d6-8b79-40f6-9569-97127bfc2ade/two+directions.png" alt="Direction 1 (contained timeline and controls) vs Direction 2 (open timeline)" class="w-full block rounded">
+      <img src="images/workspace-video-player/two+directions.png" alt="Direction 1 (contained timeline and controls) vs Direction 2 (open timeline)" class="w-full block rounded">
       <p class="text-xs text-muted mt-3 text-center">Direction 1 — Contained timeline and controls &nbsp;&nbsp;|&nbsp;&nbsp; Direction 2 — Open timeline</p>
     </div>
 
     <!-- 4-up detail grid visual -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751477332406-MUI4C41Z4PY9ATYDZOAX/4+up.gif?format=1500w" alt="Video player UI details - settings, timeline, volume, chapters" class="w-full block rounded">
+      <img src="images/workspace-video-player/4+up.gif" alt="Video player UI details - settings, timeline, volume, chapters" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -272,7 +297,7 @@
 
     <!-- Prototype screenshot -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/80689afd-d399-47b9-95ca-f48676133807/Screenshot+2025-07-13+at+2.44.03%E2%80%AFPM.png" alt="Prototype of the new video player in Google Drive context" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-07-13+at+2.44.03 PM.png" alt="Prototype of the new video player in Google Drive context" class="w-full block rounded">
     </div>
 
     <!-- Findings -->
@@ -308,7 +333,7 @@
 
     <!-- Design sprint comparison -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/0a3340a9-0ed4-4193-9be9-17ed1908b186/Screenshot+2026-02-09+at+7.56.59%E2%80%AFPM.png" alt="Design sprint outcome — pivoting from contained to open timeline" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2026-02-09+at+7.56.59 PM.png" alt="Design sprint outcome — pivoting from contained to open timeline" class="w-full block rounded">
     </div>
 
     <!-- What we learned -->
@@ -323,7 +348,7 @@
 
     <!-- What we learned diagram -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/2fc533b5-42a6-48b8-8b25-dbd9d9381ded/Screenshot+2025-01-19+at+11.03.27%E2%80%AFAM.png" alt="What we learned — Better UX, User preference, More Responsive, Align Visual Design, More scalable" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-01-19+at+11.03.27 AM.png" alt="What we learned — Better UX, User preference, More Responsive, Align Visual Design, More scalable" class="w-full block rounded">
     </div>
 
     <!-- Principles -->
@@ -341,7 +366,7 @@
 
     <!-- Final composite visual -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/1751381056112-FGQWWCHKUKKL3OYD1X8J/04.png?format=1500w" alt="Final video player designs across contexts - chapters, PiP, multi-device" class="w-full block rounded">
+      <img src="images/workspace-video-player/04.png" alt="Final video player designs across contexts - chapters, PiP, multi-device" class="w-full block rounded">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -356,7 +381,7 @@
 
     <!-- Refined design GIF -->
     <div class="my-12">
-      <img src="https://images.squarespace-cdn.com/content/v1/5833262f2994ca7d6adb5628/c2786fc1-2c4f-45cb-b738-499e7890dd10/4+up.gif" alt="Refined video player — settings, playback, volume, and chapter interactions" class="w-full block rounded">
+      <img src="images/workspace-video-player/4+up-c2786fc1.gif" alt="Refined video player — settings, playback, volume, and chapter interactions" class="w-full block rounded">
     </div>
 
     <!-- Post-launch metrics -->
@@ -402,7 +427,6 @@
 
   <!-- Footer -->
   <footer class="text-center px-[30px] pt-20 pb-10">
-    <p class="font-serif text-5xl font-normal text-body mb-[60px] leading-[1.3] max-md:text-[32px]">I'm a product designer living and working in Boulder</p>
     <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
       <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
       <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>
