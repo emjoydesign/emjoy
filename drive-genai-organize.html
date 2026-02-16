@@ -42,9 +42,11 @@
 <body>
 
   <!-- Full-Screen Hero -->
-  <section class="h-screen bg-[#1a73e8] flex flex-col relative">
+  <section class="min-h-screen relative flex flex-col overflow-hidden">
+    <!-- Gradient Background -->
+    <img src="images/drive-genai-organize/Gradient.png" alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true">
     <!-- Nav -->
-    <header class="flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
+    <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
       <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
       <nav>
         <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
@@ -52,21 +54,24 @@
       </nav>
     </header>
     <!-- Hero Content -->
-    <div class="flex-1 flex items-center px-[60px] max-md:px-5">
-      <div class="max-w-[1100px] mx-auto w-full grid grid-cols-2 gap-16 items-center max-md:grid-cols-1">
+    <div class="relative z-10 flex-1 flex items-center">
+      <div class="w-full flex items-center">
         <!-- Text -->
-        <div>
-          <p class="font-heading text-[13px] font-bold tracking-[1.5px] uppercase text-white/60 mb-4">Google</p>
-          <h1 class="font-serif text-[56px] font-normal text-white leading-[1.15] max-md:text-[36px]">Drive GenAI Organize</h1>
+        <div class="pl-[60px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
+          <img src="images/drive-genai-organize/google-logo.png" alt="Google" class="h-[26px] w-auto mb-5 brightness-0">
+          <h1 class="font-nav text-[48px] font-bold text-black leading-[1.15] mb-6 max-md:text-[36px]">Drive AI Organizer</h1>
+          <p class="text-[15px] text-black leading-[1.7] mb-4">In 2025, we reimagined Google Drive as an "Assistive Librarian" — transforming file storage into an intelligent agent that proactively helps users find, analyze, and <strong>organize</strong> their files.</p>
+          <p class="text-[15px] text-black leading-[1.7] mb-6">As lead designer for the organize initiative, I spearheaded the 0-to-1 vision for an AI file organizer. With 88% of users organizing weekly, we focused on high-impact, low-risk actions to eliminate manual friction. This initiative successfully validated market fit, achieving a 97% usability rating.</p>
+          <p class="text-[14px] text-black font-medium font-heading tracking-[0.5px]">2025–2026</p>
         </div>
-        <!-- Hero Image -->
-        <div class="flex items-center justify-center max-md:hidden">
-          <img src="images/workspace-video-player/drive_logo.png" alt="Google Drive logo" class="w-full max-w-none opacity-30 mix-blend-lighten scale-[4]">
+        <!-- Hero Product Screenshot -->
+        <div class="max-md:hidden flex-1 pl-16 -mr-[10%]">
+          <img src="images/drive-genai-organize/Drive AI Organizer.png" alt="Drive AI Organizer — Organize my files interface" class="w-full block rounded-l-xl shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
         </div>
       </div>
     </div>
     <!-- Scroll Arrow -->
-    <div class="pb-10 flex justify-center">
+    <div class="relative z-10 pb-10 flex justify-center">
       <a href="#content" class="text-white/60 hover:text-white transition-colors">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M6 9l6 6 6-6"/>
@@ -77,30 +82,39 @@
 
   <main id="content" class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
 
-    <div class="pt-20 max-md:pt-10"></div>
-
     <!-- Role / Team / Contribution -->
-    <div class="grid grid-cols-3 gap-10 mb-12 max-md:grid-cols-1 max-md:gap-6">
-      <div>
-        <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Role</div>
-        <p class="text-[15px] text-body leading-[1.7]">Design Lead</p>
-      </div>
-      <div>
-        <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Team</div>
-        <p class="text-[15px] text-body leading-[1.7]">Team details coming soon</p>
-      </div>
-      <div>
-        <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Contribution</div>
-        <p class="text-[15px] text-body leading-[1.7]">84% Positive Impression, 93% Delight, 97% Usability, 81% Value</p>
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 mt-0 mb-0">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-6">
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Role</div>
+              <p class="text-[15px] text-body leading-[1.7]">Design Lead</p>
+            </div>
+            <div>
+              <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Team</div>
+              <p class="text-[15px] text-body leading-[1.7]">1 Designer<br>2 Researchers<br>1 Visual Designer</p>
+            </div>
+          </div>
+          <div>
+            <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Contribution</div>
+            <ul class="list-disc pl-5">
+              <li class="text-[15px] text-body leading-[1.7] mb-2">Defined and led the 0→1 vision for an intelligent file organizing agent in Drive.</li>
+              <li class="text-[15px] text-body leading-[1.7] mb-2">Explored and prototyped multiple interaction models, partnering with Research to validate trust and usability — achieving 100% task completion in testing.</li>
+              <li class="text-[15px] text-body leading-[1.7] mb-2">Secured leadership alignment on the AI interaction direction and execution strategy.</li>
+              <li class="text-[15px] text-body leading-[1.7]">Launched to Alpha with 97% usability, validating strong early product-market fit.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-    <hr class="border-t border-divider my-12">
+    <div class="pt-20 max-md:pt-10"></div>
 
     <!-- ==================== CONTEXT ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Context</h2>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Context</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -152,7 +166,7 @@
     <!-- ==================== COMPETITIVE ANALYSIS ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Competitive Analysis</h2>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Competitive Analysis</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -190,7 +204,7 @@
     <!-- ==================== DESIGN PROCESS ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Design Process</h2>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Design Process</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -250,7 +264,7 @@
     <!-- ==================== FINDINGS ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Findings</h2>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Findings</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -281,7 +295,7 @@
     <!-- ==================== FINAL DESIGNS ==================== -->
     <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
       <div class="max-w-[1100px] mx-auto px-[30px] mb-10">
-        <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Final Designs</h2>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Final Designs</h2>
       </div>
       <div class="max-w-[1100px] mx-auto px-[30px] mb-10">
         <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -324,7 +338,7 @@
     <!-- ==================== OUTCOME ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Launch Metrics</h2>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Launch Metrics</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
