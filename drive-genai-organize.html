@@ -102,7 +102,7 @@
       <div>
         <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Context</h2>
       </div>
-      <div>
+      <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Vision</div>
           <p class="text-[15px] text-body leading-[1.7] mb-3">In 2025, Google Drive evolved from a file storage system into an Assistive Librarian — an intelligent agent that proactively helps users find, analyze, and organize their content.</p>
@@ -154,7 +154,7 @@
       <div>
         <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Competitive Analysis</h2>
       </div>
-      <div>
+      <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
           <p class="text-[15px] text-body leading-[1.7] mb-3">Our competitors have taken different approaches to automating manual organizing tasks.</p>
         </div>
@@ -192,7 +192,7 @@
       <div>
         <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Design Process</h2>
       </div>
-      <div>
+      <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">User Journey Mapping</div>
           <p class="text-[15px] text-body leading-[1.7] mb-3">I led a journey mapping exercise to visualize the phases of organizing and to ensure alignment across the team. This process was critical for identifying three key pillars of the feature:</p>
@@ -231,18 +231,17 @@
       <img src="images/drive-genai-organize/HMO.png" alt="HMO exploration diagram — four directional options" class="w-full block rounded">
     </div>
 
-    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
-      <div></div>
-      <div>
-        <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Design Explorations</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">I explored several ways to visualize how files would move into existing and newly created folders, making sure users clearly understood both the original location and the suggested destination.</p>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">We chose Option 1 because it provided enough clarity while leveraging existing Drive components. Although Option 2 more explicitly visualized the folder structure, it would have required significant new UI work. Option 3 introduced unnecessary complexity and fell outside the scope of our initial milestone.</p>
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px] mb-10">
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+          <div></div>
+          <div>
+            <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Design Explorations</div>
+            <p class="text-[15px] text-body leading-[1.7] mb-3">I explored several ways to visualize how files would move into existing and newly created folders, making sure users clearly understood both the original location and the suggested destination.</p>
+            <p class="text-[15px] text-body leading-[1.7]">We chose Option 1 because it provided enough clarity while leveraging existing Drive components. Although Option 2 more explicitly visualized the folder structure, it would have required significant new UI work. Option 3 introduced unnecessary complexity and fell outside the scope of our initial milestone.</p>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
       <div class="max-w-[1400px] mx-auto px-[60px]">
         <img src="images/drive-genai-organize/HMO Grouping 2.png" alt="Design exploration — grouping variation" class="w-full block">
       </div>
@@ -253,20 +252,28 @@
       <div>
         <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Findings</h2>
       </div>
-      <div>
+      <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Through multiple design iterations and an end-to-end usability study, we validated that users could successfully complete organizing tasks with AI assistance — without confusion or loss of control.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Through multiple design iterations and end-to-end usability studies, we validated that users could successfully complete organizing tasks with AI assistance — without confusion or loss of control.</p>
         </div>
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">What We Validated</div>
           <ul class="list-disc pl-5 mb-3">
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Participants clearly recognized Gemini as the source of the suggestions</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">All users understood that files were being moved into existing or newly created folders</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">The acceptance interaction model was universally understood</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Participants clearly recognized <strong>Gemini as the source</strong> of suggestions</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Users understood that files were moving into <strong>existing or newly created folders</strong></li>
             <li class="text-[15px] text-body leading-[1.7] mb-2">Renaming suggested folders felt intuitive and natural</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Changing file locations overall was perceived as straightforward and low friction</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Task completion rates were high, and users expressed strong confidence in the recommendations</li>
           </ul>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Task completion rates were high, and more importantly, users expressed confidence in the system's recommendations.</p>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">What We Learned</div>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">It was critical to reinforce that users must <strong>explicitly accept suggestions</strong> — participants were initially concerned moves would happen automatically</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Clearly communicating <strong>where files are moving</strong> is essential for trust</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Many users were unfamiliar with multi-select behaviors in Drive, leading us to introduce <strong>checkboxes for clarity and control</strong></li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Providing context for <strong>why a file was suggested for a move</strong> increases confidence and acceptance</li>
+          </ul>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">These learnings reinforced that successful AI organizing isn't just about accurate suggestions — it's about designing transparency, agency, and trust into every step of the interaction.</p>
         </div>
       </div>
     </div>
@@ -317,9 +324,9 @@
     <!-- ==================== OUTCOME ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Outcome</h2>
+        <h2 class="font-serif text-[36px] font-normal text-body leading-[1.15] max-md:text-[28px]">Launch Metrics</h2>
       </div>
-      <div>
+      <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Launch Metrics — Validating Market Fit</div>
           <p class="text-[15px] text-body leading-[1.7] mb-3">The early launch results have been overwhelmingly positive, proving that users are ready for AI-assisted file organizing.</p>
