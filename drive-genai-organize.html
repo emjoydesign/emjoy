@@ -38,6 +38,43 @@
       }
     }
   </style>
+  <style>
+    .lightbox-img { cursor: pointer; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+    .lightbox-close svg { width: 20px; height: 20px; }
+  </style>
 </head>
 <body>
 
@@ -57,16 +94,16 @@
     <div class="relative z-10 flex-1 flex items-center">
       <div class="w-full flex items-center">
         <!-- Text -->
-        <div class="pl-[60px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
+        <div class="pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
           <img src="images/drive-genai-organize/google-logo.png" alt="Google" class="h-[26px] w-auto mb-5 brightness-0">
           <h1 class="font-nav text-[48px] font-bold text-black leading-[1.15] mb-6 max-md:text-[36px]">Drive AI Organizer</h1>
-          <p class="text-[15px] text-black leading-[1.7] mb-4">In 2025, we reimagined Google Drive as an "Assistive Librarian" — transforming file storage into an intelligent agent that proactively helps users find, analyze, and <strong>organize</strong> their files.</p>
-          <p class="text-[15px] text-black leading-[1.7] mb-6">As lead designer for the organize initiative, I spearheaded the 0-to-1 vision for an AI file organizer. With 88% of users organizing weekly, we focused on high-impact, low-risk actions to eliminate manual friction. This initiative successfully validated market fit, achieving a 97% usability rating.</p>
-          <p class="text-[14px] text-black font-medium font-heading tracking-[0.5px]">2025–2026</p>
+          <p class="text-[15px] text-black leading-[1.7] mb-4">In 2025/2026, we reimagined Google Drive as an "Assistive Librarian" — transforming file storage into an intelligent agent that proactively helps users find, analyze, and <strong>organize</strong> their files.</p>
+          <p class="text-[15px] text-black leading-[1.7] mb-6">As lead designer for the organize initiative, I spearheaded the 0→1 vision for an AI file organizer. With 88% of users organizing weekly, we focused on high-impact, low-risk actions to eliminate manual friction. This initiative successfully validated market fit, achieving a 97% usability rating.</p>
+
         </div>
         <!-- Hero Product Screenshot -->
         <div class="max-md:hidden flex-1 pl-16 -mr-[10%]">
-          <img src="images/drive-genai-organize/Drive AI Organizer.png" alt="Drive AI Organizer — Organize my files interface" class="w-full block rounded-l-xl shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
+          <img src="images/drive-genai-organize/Drive AI Organizer.png" alt="Drive AI Organizer — Organize my files interface" class="w-full block rounded-l-2xl shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
         </div>
       </div>
     </div>
@@ -119,7 +156,7 @@
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Business Goals</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">In 2025, Google Drive set out to evolve from a passive file storage system into a true thinking partner — an intelligent agent that proactively helps users find, analyze, and organize their content.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">In 2025/2026, Google Drive set out to evolve from a passive file storage system into a true thinking partner — an intelligent agent that proactively helps users find, analyze, and organize their content.</p>
           <p class="text-[15px] text-body leading-[1.7] mb-3">With Gemini integration, organizing became a strategic initiative. Rather than relying on users to manually maintain structure, Drive now actively helps keep content organized, making it easier to find, access, and collaborate on files.</p>
         </div>
         <div class="mb-10">
@@ -156,91 +193,93 @@
       </div>
     </div>
 
-    <hr class="border-t border-divider my-12">
-
     <!-- ==================== COMPETITIVE ANALYSIS ==================== -->
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+          <div>
+            <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Competitive Analysis</h2>
+          </div>
+          <div class="pt-[18px] max-md:pt-0">
+            <div class="mb-10">
+              <p class="text-[15px] text-body leading-[1.7] mb-3">Our competitors have taken different approaches to automating manual organizing tasks.</p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-8 mt-11 max-md:grid-cols-1">
+          <div>
+            <div class="aspect-[4/3] mb-4 overflow-hidden rounded-2xl">
+              <img src="images/drive-genai-organize/Box.png" alt="Box metadata extraction interface" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-heading text-[13px] font-bold tracking-[1px] uppercase text-body mb-2">Box</h3>
+            <p class="text-[15px] text-body leading-[1.7]">Using GenAI for <strong>metadata extraction</strong> to automate workflows &amp; improve search. Focused on Enterprise.</p>
+          </div>
+          <div>
+            <div class="aspect-[4/3] mb-4 overflow-hidden rounded-2xl">
+              <img src="images/drive-genai-organize/Dropbox.gif" alt="Dropbox folder automation interface" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-heading text-[13px] font-bold tracking-[1px] uppercase text-body mb-2">Dropbox</h3>
+            <p class="text-[15px] text-body leading-[1.7]">Provide basic folder automations, <strong>limited GenAI</strong> organization automations <strong>for folders</strong>.</p>
+          </div>
+          <div>
+            <div class="aspect-[4/3] mb-4 overflow-hidden rounded-2xl">
+              <img src="images/drive-genai-organize/Claude.gif" alt="Claude computer use interface" class="w-full h-full object-cover">
+            </div>
+            <h3 class="font-heading text-[13px] font-bold tracking-[1px] uppercase text-body mb-2">Claude</h3>
+            <p class="text-[15px] text-body leading-[1.7]">Long game. Bet on <strong>computer use</strong> being used to automate repetitive organizing tasks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== USER JOURNEY MAPPING ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Competitive Analysis</h2>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">User Journey Mapping</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Our competitors have taken different approaches to automating manual organizing tasks.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">I led a journey mapping exercise to align the team around the core phases of the organizing experience. Since our initial launch focused on organizing a folder and My Drive, we concentrated on those primary journeys.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">This exercise was critical in shaping the foundation of the experience:</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>User Flow</strong> — Mapping the end-to-end path to ensure users could successfully complete an organizing request without friction.</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>User Needs</strong> — Identifying the information required for users to feel confident in an AI suggestion (e.g., destination, reason for move, level of impact).</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>User Intent</strong> — Clarifying and personalizing organizing goals to ensure suggestions aligned with what users were trying to accomplish.</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Constraint</strong> — Due to timeline limitations, we narrowed scope to root-level and single-folder organizing, intentionally deferring deeper restructuring capabilities to future milestones.</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="grid grid-cols-3 gap-8 mt-6 mb-12 max-md:grid-cols-1">
-      <div>
-        <div class="aspect-[4/3] mb-4 overflow-hidden rounded">
-          <img src="images/drive-genai-organize/Box.png" alt="Box metadata extraction interface" class="w-full h-full object-cover">
-        </div>
-        <h3 class="font-heading text-[13px] font-bold tracking-[1px] uppercase text-body mb-2">Box</h3>
-        <p class="text-[15px] text-body leading-[1.7]">Using GenAI for <strong>metadata extraction</strong> to automate workflows &amp; improve search. Focused on Enterprise.</p>
-      </div>
-      <div>
-        <div class="aspect-[4/3] mb-4 overflow-hidden rounded">
-          <img src="images/drive-genai-organize/Dropbox.gif" alt="Dropbox folder automation interface" class="w-full h-full object-cover">
-        </div>
-        <h3 class="font-heading text-[13px] font-bold tracking-[1px] uppercase text-body mb-2">Dropbox</h3>
-        <p class="text-[15px] text-body leading-[1.7]">Provide basic folder automations, <strong>limited GenAI</strong> organization automations <strong>for folders</strong>.</p>
-      </div>
-      <div>
-        <div class="aspect-[4/3] mb-4 overflow-hidden rounded">
-          <img src="images/drive-genai-organize/Claude.gif" alt="Claude computer use interface" class="w-full h-full object-cover">
-        </div>
-        <h3 class="font-heading text-[13px] font-bold tracking-[1px] uppercase text-body mb-2">Claude</h3>
-        <p class="text-[15px] text-body leading-[1.7]">Long game. Bet on <strong>computer use</strong> being used to automate repetitive organizing tasks.</p>
-      </div>
+    <div class="my-12">
+      <img src="images/drive-genai-organize/HMO Journey Map.png" alt="User journey mapping exercise" class="w-full block rounded-2xl lightbox-img">
     </div>
-
-    <hr class="border-t border-divider my-12">
 
     <!-- ==================== DESIGN PROCESS ==================== -->
-    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
-      <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Design Process</h2>
-      </div>
-      <div class="pt-[18px] max-md:pt-0">
-        <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">User Journey Mapping</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">I led a journey mapping exercise to visualize the phases of organizing and to ensure alignment across the team. This process was critical for identifying three key pillars of the feature:</p>
-          <ol class="list-decimal pl-5 mb-3">
-            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>User Flow</strong> — Mapping the path to ensure a successfully organize request.</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>User Needs</strong> — Pinpointing the specific information users require to feel confident in an AI suggestion (e.g., location, reason for move).</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>User Intent</strong> — Clarify and personalize users organizing goals.</li>
-          </ol>
-          <p class="text-[15px] italic text-body leading-[1.7] mb-3">Unfortunately, due to timeline constraint, we had to take phase 2 out of the process as we thought our system could predict user intent.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="my-12">
-      <img src="images/drive-genai-organize/Screenshot+2026-02-10+at+10.16.03 AM.png" alt="User journey mapping exercise" class="w-full block rounded">
-    </div>
-
-    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
-      <div></div>
-      <div>
-        <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Defining a Surface</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">A critical part of the process was determining where to surface Gemini's suggestions. I explored four directions, weighing user context against technical and organizational constraints.</p>
-          <ul class="list-disc pl-5 mb-3">
-            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Above the file list:</strong> High visibility but too intrusive</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Dialog:</strong> Provided focus but felt cramped</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Workspace Gemini side panel:</strong> Ideal but blocked by external team ownership</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Dedicated view:</strong> Selected — full canvas, rapid iteration, scaling potential</li>
-          </ul>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">We ultimately chose a <strong>dedicated view</strong>. It offered a "full canvas" for the best user experience and allowed us to move quickly without external blockers. This path was the most scalable way to validate the feature's core value.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="my-12">
-      <img src="images/drive-genai-organize/HMO.png" alt="HMO exploration diagram — four directional options" class="w-full block rounded">
-    </div>
-
     <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px] mb-10">
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+          <div>
+            <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Design Process</h2>
+          </div>
+          <div class="pt-[18px] max-md:pt-0">
+            <div class="mb-10">
+              <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Defining a Surface</div>
+              <p class="text-[15px] text-body leading-[1.7] mb-3">A critical part of the process was determining where to surface Gemini's suggestions. I explored four directions, weighing user context against technical and organizational constraints.</p>
+              <ul class="list-disc pl-5 mb-3">
+                <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Above the file list:</strong> High visibility but too intrusive</li>
+                <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Dialog:</strong> Provided focus but felt cramped</li>
+                <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Workspace Gemini side panel:</strong> Ideal but blocked by external team ownership</li>
+                <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Dedicated view:</strong> Selected — full canvas, rapid iteration, scaling potential</li>
+              </ul>
+              <p class="text-[15px] text-body leading-[1.7] mb-3">We ultimately chose a <strong>dedicated view</strong>. It offered a "full canvas" for the best user experience and allowed us to move quickly without external blockers. This path was the most scalable way to validate the feature's core value.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-[1100px] mx-auto px-[30px] mb-16">
+        <img src="images/drive-genai-organize/HMO.png" alt="HMO exploration diagram — four directional options" class="w-full block rounded-2xl lightbox-img">
+      </div>
       <div class="max-w-[1100px] mx-auto px-[30px] mb-10">
         <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
           <div></div>
@@ -251,8 +290,22 @@
           </div>
         </div>
       </div>
-      <div class="max-w-[1400px] mx-auto px-[60px]">
-        <img src="images/drive-genai-organize/HMO Grouping 2.png" alt="Design exploration — grouping variation" class="w-full block">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <img src="images/drive-genai-organize/HMO Grouping 2.png" alt="Design exploration — grouping variation" class="w-full block rounded-2xl lightbox-img">
+      </div>
+      <div class="max-w-[1100px] mx-auto px-[30px] mt-16 mb-10">
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+          <div></div>
+          <div>
+            <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Rename New Folder</div>
+            <p class="text-[15px] text-body leading-[1.7]">We focused heavily on the renaming experience for newly created folders. When the system generated a folder name, users could edit it before confirming — with the option to apply the updated name across all matching suggestions — preserving control and consistency without adding friction.</p>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <div class="bg-white rounded-2xl p-10">
+          <img src="images/drive-genai-organize/Rename.png" alt="Design exploration — rename new folder" class="w-full block rounded-2xl lightbox-img">
+        </div>
       </div>
       <div class="max-w-[1100px] mx-auto px-[30px] mt-16 mb-10">
         <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -263,8 +316,8 @@
           </div>
         </div>
       </div>
-      <div class="max-w-[1400px] mx-auto px-[60px]">
-        <img src="images/drive-genai-organize/Screenshot 2026-02-16.png" alt="Design iteration — end-to-end journey for usability testing" class="w-full block">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <img src="images/drive-genai-organize/Screenshot 2026-02-16.png" alt="Design iteration — end-to-end journey for usability testing" class="w-full block rounded-2xl lightbox-img">
       </div>
     </div>
 
@@ -313,8 +366,8 @@
           </div>
         </div>
       </div>
-      <div class="max-w-[1400px] mx-auto px-[60px]">
-        <div class="overflow-hidden rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.1)]"><img src="images/drive-genai-organize/HMO MVP Loading.gif" alt="Final design — MVP loading state" class="w-full block -mt-px"></div>
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <div class="overflow-hidden rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.1)]"><img src="images/drive-genai-organize/HMO MVP Loading.gif" alt="Final design — MVP loading state" class="w-full block -mt-px lightbox-img"></div>
       </div>
       <div class="max-w-[1100px] mx-auto px-[30px] mt-16 mb-10">
         <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -325,8 +378,8 @@
           </div>
         </div>
       </div>
-      <div class="max-w-[1400px] mx-auto px-[60px]">
-        <img src="images/drive-genai-organize/HMO MVP Rename.gif" alt="Final design — MVP rename interaction" class="w-full block rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.1)]">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <img src="images/drive-genai-organize/HMO MVP Rename.gif" alt="Final design — MVP rename interaction" class="w-full block rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.1)] lightbox-img">
       </div>
       <div class="max-w-[1100px] mx-auto px-[30px] mt-16 mb-10">
         <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -337,8 +390,8 @@
           </div>
         </div>
       </div>
-      <div class="max-w-[1400px] mx-auto px-[60px]">
-        <img src="images/drive-genai-organize/HMO MVP Accept.gif" alt="Final design — MVP accept interaction" class="w-full block rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.1)]">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <img src="images/drive-genai-organize/HMO MVP Accept.gif" alt="Final design — MVP accept interaction" class="w-full block rounded-2xl shadow-[0_4px_24px_rgba(0,0,0,0.1)] lightbox-img">
       </div>
     </div>
 
@@ -349,7 +402,7 @@
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Launch Metrics — Validating Market Fit</div>
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Validating Market Fit</div>
           <p class="text-[15px] text-body leading-[1.7] mb-3">The early launch results have been overwhelmingly positive, proving that users are ready for AI-assisted file organizing.</p>
           <ul class="list-disc pl-5 mb-3">
             <li class="text-[15px] text-body leading-[1.7] mb-2">84% Overall Positive Impression</li>
@@ -392,6 +445,38 @@
       <a href="brightscope.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">BrightScope Beacon</a>
     </nav>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+  <script>
+    const overlay = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.lightbox-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay || e.target.closest('.lightbox-close')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 
 </body>
 </html>
