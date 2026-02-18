@@ -79,9 +79,9 @@
 <body>
 
   <!-- Full-Screen Hero -->
-  <section class="h-screen bg-[#202124] flex flex-col relative">
+  <section class="min-h-screen relative flex flex-col overflow-hidden bg-[#202124]">
     <!-- Nav -->
-    <header class="flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
+    <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
       <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
       <nav>
         <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
@@ -89,21 +89,23 @@
       </nav>
     </header>
     <!-- Hero Content -->
-    <div class="flex-1 flex items-center px-[60px] max-md:px-5">
-      <div class="max-w-[1100px] mx-auto w-full grid grid-cols-2 gap-16 items-center max-md:grid-cols-1">
+    <div class="relative z-10 flex-1 flex items-center">
+      <div class="w-full flex items-center">
         <!-- Text -->
-        <div>
-          <p class="font-heading text-[13px] font-bold tracking-[1.5px] uppercase text-white/60 mb-4">Google</p>
-          <h1 class="font-nav text-[56px] font-bold text-white leading-[1.15] max-md:text-[36px]">Workspace Video Player</h1>
+        <div class="pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
+          <img src="images/drive-genai-organize/google-logo.png" alt="Google" class="h-[26px] w-auto mb-5 brightness-0 invert">
+          <h1 class="font-nav text-[48px] font-bold text-white leading-[1.15] mb-6 max-md:text-[36px]">Workspace Video Player</h1>
+          <p class="text-[15px] text-white/80 leading-[1.7] mb-4">Redesigning the video playback experience across Google Workspace, improving how millions of users watch and interact with video content in Drive, Docs, and Slides.</p>
+          <p class="text-[15px] text-white/80 leading-[1.7] mb-6">Placeholder description coming soon.</p>
         </div>
-        <!-- Hero Image -->
-        <div class="flex items-center justify-center max-md:hidden">
-          <img src="images/workspace-video-player/drive_logo.png" alt="Google Drive logo" class="w-full max-w-none opacity-30 mix-blend-lighten scale-[4]">
+        <!-- Hero Product Screenshot -->
+        <div class="max-md:hidden flex-1 pl-16 -mr-[10%]">
+          <img src="images/workspace-video-player/video.gif" alt="Workspace Video Player — video playback interface" class="w-full block rounded-l-2xl shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
         </div>
       </div>
     </div>
     <!-- Scroll Arrow -->
-    <div class="pb-10 flex justify-center">
+    <div class="relative z-10 pb-10 flex justify-center">
       <a href="#content" class="text-white/60 hover:text-white transition-colors">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M6 9l6 6 6-6"/>
@@ -130,7 +132,11 @@
       </div>
       <div>
         <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Contribution</div>
-        <p class="text-[15px] text-body leading-[1.7]">~84M weekly views, CSAT 56% &rarr; 75%, DSAT 21% &rarr; 15%</p>
+        <ul class="list-disc pl-5">
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Defined a multi-year UX Video Playback Strategy to modernize the Workspace Playback experience — UI refresh was the first project</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Successfully secured buy-in from Workspace leads to prioritize a visual update ahead of other critical features</li>
+          <li class="text-[15px] text-body leading-[1.7]">Drove alignment across Workspace team to ensure we built a scalable system</li>
+        </ul>
       </div>
         </div>
       </div>
@@ -146,74 +152,37 @@
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Overview</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Google Workspace had a video primitive to power video experiences across our products — encompassing video recording, editing, sharing, and playback. The goal was to ensure a cohesive experience for our users, accelerate innovation across our product teams, and build for the future of work.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Google Workspace established a shared video primitive to power the experience across its products, encompassing recording, editing, sharing, and playback. As video became increasingly central to collaboration, the experience needed to feel cohesive, reliable, and scalable across products.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Editors launched Google Vids, Meet expanded asynchronous meeting capabilities, and Drive evolved its video player to support cross-product workflows. Together, this initiative aimed to make video a seamless, integrated part of the future of work.</p>
         </div>
         <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">UX Lead</div>
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Insights</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Despite heavy usage, the Workspace video playback experience was underperforming.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">76% of users reported frustration.</p>
           <ul class="list-disc pl-5 mb-3">
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Defined a multi-year UX Video Playback Strategy to modernize the Workspace Playback experience — UI refresh was the first project</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Successfully secured buy-in from Workspace leads to prioritize a visual update ahead of other critical features</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Drove alignment across Workspace team to ensure we built a scalable system</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">CSAT: 56%</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">DSAT: 30%</li>
           </ul>
-        </div>
-        <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Impact</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Collaborated with designers across Workspace, I contributed to, led and directed the delivery of 9 major features, resulting in:</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Users cited:</p>
           <ul class="list-disc pl-5 mb-3">
-            <li class="text-[15px] text-body leading-[1.7] mb-2">~84M weekly views</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Increase CSAT from 56% to 75%</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Decreased DSAT from 21% to 15%</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Reliability issues (buffering, processing latency)</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Poor feature discoverability</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Looking like YouTube confused users</li>
           </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Full-width image -->
-    <div class="my-12">
-      <img src="images/workspace-video-player/video.gif" alt="Video player interaction demo" class="w-full block rounded-2xl lightbox-img">
-    </div>
-
-    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
-      <div></div>
-      <div>
-        <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Context</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Workspace has a video primitive to power the video experiences across Google Workspace. The Editors create a new video editing tool (Vids), Meet is improving their asynchronous meeting experience, and Drive is updating the video player to better support all cross-product journeys. These updates are all part of Workspace's effort to make video a more seamless and integrated part of Google Workspace.</p>
-        </div>
-        <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Research</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Users were not satisfied with the current playback experience</p>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">76% of users expressed frustration due to:</p>
-          <ul class="list-disc pl-5 mb-3">
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Reliability buffering, processing latency</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Looking like YouTube confuses users</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">Feature discoverability</li>
-          </ul>
-          <p class="text-sm font-semibold text-accent tracking-[0.5px] mt-4">CSAT 56% &bull; DSAT 30%</p>
           <div class="text-[15px] italic text-body leading-[1.7] mt-6 mb-5 pl-5 border-l-[3px] border-accent">"Looks like YouTube but doesn't entirely behave like it"</div>
         </div>
-      </div>
-    </div>
-
-    <!-- Full-width image -->
-    <div class="my-12">
-      <img src="images/workspace-video-player/Screenshot+2025-07-02+at+11.00.15 AM.png" alt="Video player across devices - phone, tablet, desktop" class="w-full block rounded-2xl lightbox-img">
-    </div>
-
-    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
-      <div></div>
-      <div>
         <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Problems</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Because the Workspace player looked like YouTube, users expected it to act like YouTube</p>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">However, the underlying API lacked essential features—specifically chapters and preview scrubbing—with no roadmap for improvement</p>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">The player was dated and didn't align GM3 standards, creating a disjointed user experience</p>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Plus, Google Vids was creating a player that diverged from the Drive experience</p>
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Problem</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Because the player visually resembled YouTube, users expected YouTube-level functionality. However, the underlying API lacked critical features like chapters and preview scrubbing — with no near-term roadmap to close the gap.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Additionally:</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">The UI was dated and misaligned with GM3 standards</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Google Vids was building a divergent player experience</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- Full-width image -->
     <div class="my-12">
       <img src="images/workspace-video-player/Screenshot+2025-07-02+at+2.58.18 PM.png" alt="The existing video player — resembled YouTube, confusing users" class="w-full block rounded-2xl lightbox-img">
     </div>
@@ -223,12 +192,27 @@
       <div>
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Opportunity</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">I recognized this user pain point and successfully secured buy-in from Workspace leads to prioritize a visual update ahead of other critical features</p>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Ensuring dedicated resource allocation and cross-product alignment</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">I identified video playback as a high-impact, cross-Workspace pain point and successfully advocated for prioritizing a visual modernization ahead of other roadmap features. By securing leadership buy-in, I ensured dedicated resourcing and alignment to execute the update effectively.</p>
         </div>
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Goal</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Make video a hero journey across Workspace by delivering a unified async video experience</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Deliver a unified, asynchronous video experience that:</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Aligns with GM3 standards</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Sets consistent user expectations</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Supports cross-product workflows</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Scales with Workspace's long-term video strategy</li>
+          </ul>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Impact</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Partnering with designers across Workspace, I led and contributed to the delivery of 9 major features, resulting in:</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">~84M weekly views supported</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">CSAT increased from 56% &rarr; 75%</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">DSAT decreased from 21% &rarr; 15%</li>
+          </ul>
+          <p class="text-[15px] text-body leading-[1.7]">This work re-established trust in Workspace video and created a scalable foundation for future work.</p>
         </div>
       </div>
     </div>
@@ -263,18 +247,6 @@
     </div>
     <div class="my-12">
       <img src="images/workspace-video-player/video+process+5.png" alt="Volume control — levels, interactions, and responsive behavior" class="w-full block rounded-2xl lightbox-img">
-    </div>
-
-    <!-- Hover states visual -->
-    <div class="flex gap-[30px] items-start my-12 bg-[#f7f7f7] rounded-lg p-10 max-md:flex-col max-md:p-6">
-      <div class="flex-1 text-center">
-        <img src="images/workspace-video-player/Hover.gif" alt="Video player resting state" class="w-full rounded-2xl mb-3 lightbox-img">
-        <p class="text-[13px] text-body">Resting</p>
-      </div>
-      <div class="flex-1 text-center">
-        <img src="images/workspace-video-player/Hover.gif" alt="Video player on hover state" class="w-full rounded-2xl mb-3 lightbox-img">
-        <p class="text-[13px] text-body">On hover</p>
-      </div>
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -318,10 +290,6 @@
     <div class="my-12">
       <img src="images/workspace-video-player/two+directions.png" alt="Direction 1 (contained timeline and controls) vs Direction 2 (open timeline)" class="w-full block rounded-2xl lightbox-img">
       <p class="text-xs text-muted mt-3 text-center">Direction 1 — Contained timeline and controls &nbsp;&nbsp;|&nbsp;&nbsp; Direction 2 — Open timeline</p>
-    </div>
-
-    <div class="my-12">
-      <img src="images/workspace-video-player/4+up.gif" alt="Video player UI details - settings, timeline, volume, chapters" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -398,8 +366,43 @@
       </div>
     </div>
 
+    <hr class="border-t border-divider my-12">
+
+    <!-- ==================== FINAL DESIGN ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Final Design</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+      </div>
+    </div>
+
     <div class="my-12">
       <img src="images/workspace-video-player/04.png" alt="Final video player designs across contexts - chapters, PiP, multi-device" class="w-full block rounded-2xl lightbox-img">
+    </div>
+    <div class="my-12">
+      <img src="images/workspace-video-player/video.gif" alt="Final video player design — interaction demo" class="w-full block rounded-2xl lightbox-img">
+    </div>
+    <div class="my-12">
+      <img src="images/workspace-video-player/Screenshot+2025-07-02+at+11.00.15 AM.png" alt="Final video player design — across devices" class="w-full block rounded-2xl lightbox-img">
+    </div>
+    <div class="my-12">
+      <img src="images/workspace-video-player/two+directions.png" alt="Direction 1 (contained timeline and controls) vs Direction 2 (open timeline)" class="w-full block rounded-2xl lightbox-img">
+    </div>
+    <div class="my-12">
+      <img src="images/workspace-video-player/4+up.gif" alt="Video player UI details - settings, timeline, volume, chapters" class="w-full block rounded-2xl lightbox-img">
+    </div>
+
+    <!-- Hover states visual -->
+    <div class="flex gap-[30px] items-start my-12 bg-[#f7f7f7] rounded-lg p-10 max-md:flex-col max-md:p-6">
+      <div class="flex-1 text-center">
+        <img src="images/workspace-video-player/Hover.gif" alt="Video player resting state" class="w-full rounded-2xl mb-3 lightbox-img">
+        <p class="text-[13px] text-body">Resting</p>
+      </div>
+      <div class="flex-1 text-center">
+        <img src="images/workspace-video-player/Hover.gif" alt="Video player on hover state" class="w-full rounded-2xl mb-3 lightbox-img">
+        <p class="text-[13px] text-body">On hover</p>
+      </div>
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -415,10 +418,6 @@
           <p class="text-[15px] text-body leading-[1.7] mb-3">We moved forward with the open timeline and refined the visual and motion design.</p>
         </div>
       </div>
-    </div>
-
-    <div class="my-12">
-      <img src="images/workspace-video-player/4+up-c2786fc1.gif" alt="Refined video player — settings, playback, volume, and chapter interactions" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -439,24 +438,6 @@
           <div class="text-[15px] italic text-body leading-[1.7] mb-5 pl-5 border-l-[3px] border-accent">"The service has been impeccable lately! This player looks so cool. Keep going!"</div>
           <div class="text-[15px] italic text-body leading-[1.7] mb-5 pl-5 border-l-[3px] border-accent">"I like it! It's not like YouTube anymore; I think it works better and it reflects a new personality, is modern, and could improve the experience for users. I really like it—good job!"</div>
         </div>
-      </div>
-    </div>
-
-    <hr class="border-t border-divider my-12">
-
-    <!-- ==================== TEAM ==================== -->
-    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
-      <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Team</h2>
-      </div>
-      <div class="pt-[18px] max-md:pt-0">
-        <ul class="list-none">
-          <li class="text-[15px] text-body leading-[1.8]"><strong class="font-semibold">UX Lead</strong> — Emily Thomas</li>
-          <li class="text-[15px] text-body leading-[1.8]"><strong class="font-semibold">Visual Designers</strong> — Yong Kim (WS Design System), Zo&euml; Knight (Drive)</li>
-          <li class="text-[15px] text-body leading-[1.8]"><strong class="font-semibold">UXE &amp; Motion Designer</strong> — Josh Greco (Drive)</li>
-          <li class="text-[15px] text-body leading-[1.8]"><strong class="font-semibold">Interaction Designers</strong> — Dan Littlewood (Meet), Nida Hameed (Editors), Ron Zhang (Drive Mobile)</li>
-          <li class="text-[15px] text-body leading-[1.8]"><strong class="font-semibold">Research</strong> — Prasanna Muthukumar</li>
-        </ul>
       </div>
     </div>
 
