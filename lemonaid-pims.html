@@ -38,6 +38,43 @@
       }
     }
   </style>
+  <style>
+    .lightbox-img { cursor: pointer; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+    .lightbox-close svg { width: 20px; height: 20px; }
+  </style>
 </head>
 <body>
 
@@ -115,7 +152,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Portfolio-PIMS-01.png" alt="PIMS platform overview" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-01.png" alt="PIMS platform overview" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -134,19 +171,19 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Portfolio-PIMS-02.png" alt="PIMS interface design" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-02.png" alt="PIMS interface design" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/screencapture-qa-pims-polkadoc-444-visits-9883-1474508937799.png" alt="PIMS visit management screen" class="w-full block rounded">
+      <img src="images/lemonaid-pims/screencapture-qa-pims-polkadoc-444-visits-9883-1474508937799.png" alt="PIMS visit management screen" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Portfolio-PIMS-03.png" alt="PIMS clinical workflow" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-03.png" alt="PIMS clinical workflow" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Portfolio-PIMS-04.png" alt="PIMS patient records" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-04.png" alt="PIMS patient records" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Portfolio-PIMS-05.png" alt="PIMS dashboard" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-05.png" alt="PIMS dashboard" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -187,25 +224,25 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Scan+1.jpg" alt="PIMS early sketches and wireframes" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Scan+1.jpg" alt="PIMS early sketches and wireframes" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/PIMS-02.png" alt="PIMS wireframe explorations" class="w-full block rounded">
+      <img src="images/lemonaid-pims/PIMS-02.png" alt="PIMS wireframe explorations" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/PIMS-03.png" alt="PIMS design iteration" class="w-full block rounded">
+      <img src="images/lemonaid-pims/PIMS-03.png" alt="PIMS design iteration" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Portfolio-PIMS-01-14955084.png" alt="PIMS high-fidelity mockup" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-01-14955084.png" alt="PIMS high-fidelity mockup" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Portfolio-PIMS-07.png" alt="PIMS final design screens" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-07.png" alt="PIMS final design screens" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Portfolio-PIMS-08.png" alt="PIMS additional screens" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-08.png" alt="PIMS additional screens" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/lemonaid-pims/Portfolio-PIMS-09.png" alt="PIMS completed platform" class="w-full block rounded">
+      <img src="images/lemonaid-pims/Portfolio-PIMS-09.png" alt="PIMS completed platform" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -242,5 +279,36 @@
     </nav>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+  <script>
+    const overlay = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.lightbox-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay || e.target.closest('.lightbox-close')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 </body>
 </html>

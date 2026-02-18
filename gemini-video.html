@@ -38,6 +38,43 @@
       }
     }
   </style>
+  <style>
+    .lightbox-img { cursor: pointer; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+    .lightbox-close svg { width: 20px; height: 20px; }
+  </style>
 </head>
 <body>
 
@@ -80,7 +117,7 @@
     <div class="pt-20 max-md:pt-10"></div>
 
     <div class="mb-12">
-      <img src="images/gemini-video/Vidkick2.gif" alt="Gemini video interaction demo" class="w-full block rounded">
+      <img src="images/gemini-video/Vidkick2.gif" alt="Gemini video interaction demo" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <!-- Role / Team / Contribution -->
@@ -137,7 +174,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/gemini-video/gemini+and+video.png" alt="Gemini and video integration overview" class="w-full block rounded">
+      <img src="images/gemini-video/gemini+and+video.png" alt="Gemini and video integration overview" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -178,7 +215,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/gemini-video/sidepanel.png" alt="Gemini side panel design in video player" class="w-full block rounded">
+      <img src="images/gemini-video/sidepanel.png" alt="Gemini side panel design in video player" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -192,10 +229,10 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/gemini-video/citation.png" alt="Citation feature design" class="w-full block rounded">
+      <img src="images/gemini-video/citation.png" alt="Citation feature design" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/gemini-video/citation+3.gif" alt="Citation interaction demo" class="w-full block rounded">
+      <img src="images/gemini-video/citation+3.gif" alt="Citation interaction demo" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -229,5 +266,36 @@
     </nav>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+  <script>
+    const overlay = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.lightbox-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay || e.target.closest('.lightbox-close')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 </body>
 </html>

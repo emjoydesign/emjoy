@@ -38,6 +38,43 @@
       }
     }
   </style>
+  <style>
+    .lightbox-img { cursor: pointer; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+    .lightbox-close svg { width: 20px; height: 20px; }
+  </style>
 </head>
 <body>
 
@@ -133,7 +170,7 @@
 
     <!-- Full-width image -->
     <div class="my-12">
-      <img src="images/workspace-video-player/video.gif" alt="Video player interaction demo" class="w-full block rounded">
+      <img src="images/workspace-video-player/video.gif" alt="Video player interaction demo" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -160,7 +197,7 @@
 
     <!-- Full-width image -->
     <div class="my-12">
-      <img src="images/workspace-video-player/Screenshot+2025-07-02+at+11.00.15 AM.png" alt="Video player across devices - phone, tablet, desktop" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-07-02+at+11.00.15 AM.png" alt="Video player across devices - phone, tablet, desktop" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -178,7 +215,7 @@
 
     <!-- Full-width image -->
     <div class="my-12">
-      <img src="images/workspace-video-player/Screenshot+2025-07-02+at+2.58.18 PM.png" alt="The existing video player — resembled YouTube, confusing users" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-07-02+at+2.58.18 PM.png" alt="The existing video player — resembled YouTube, confusing users" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -213,29 +250,29 @@
 
     <!-- Full-width process images -->
     <div class="my-12">
-      <img src="images/workspace-video-player/video+process+1.png" alt="Type of players — large and small player definitions" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+1.png" alt="Type of players — large and small player definitions" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="my-12">
-      <img src="images/workspace-video-player/video+process+2.png" alt="Large player anatomy — controls, timeline, and feature mapping" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+2.png" alt="Large player anatomy — controls, timeline, and feature mapping" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="my-12">
-      <img src="images/workspace-video-player/video+process+3.png" alt="Small player anatomy — minimal controls and hover behavior" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+3.png" alt="Small player anatomy — minimal controls and hover behavior" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="my-12">
-      <img src="images/workspace-video-player/video+process+4.png" alt="Building blocks — icons, controls, scrubbers, and UI components" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+4.png" alt="Building blocks — icons, controls, scrubbers, and UI components" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="my-12">
-      <img src="images/workspace-video-player/video+process+5.png" alt="Volume control — levels, interactions, and responsive behavior" class="w-full block rounded">
+      <img src="images/workspace-video-player/video+process+5.png" alt="Volume control — levels, interactions, and responsive behavior" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <!-- Hover states visual -->
     <div class="flex gap-[30px] items-start my-12 bg-[#f7f7f7] rounded-lg p-10 max-md:flex-col max-md:p-6">
       <div class="flex-1 text-center">
-        <img src="images/workspace-video-player/Hover.gif" alt="Video player resting state" class="w-full rounded mb-3">
+        <img src="images/workspace-video-player/Hover.gif" alt="Video player resting state" class="w-full rounded-2xl mb-3 lightbox-img">
         <p class="text-[13px] text-body">Resting</p>
       </div>
       <div class="flex-1 text-center">
-        <img src="images/workspace-video-player/Hover.gif" alt="Video player on hover state" class="w-full rounded mb-3">
+        <img src="images/workspace-video-player/Hover.gif" alt="Video player on hover state" class="w-full rounded-2xl mb-3 lightbox-img">
         <p class="text-[13px] text-body">On hover</p>
       </div>
     </div>
@@ -251,7 +288,7 @@
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/Screenshot+2025-01-20+at+5.03.38 PM.png" alt="Competitive analysis — design brainstorm and feature exploration board" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-01-20+at+5.03.38 PM.png" alt="Competitive analysis — design brainstorm and feature exploration board" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -265,7 +302,7 @@
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/Screenshot+2025-01-20+at+5.05.25 PM.png" alt="Cross-Workspace design jam — competitive landscape and video player references" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-01-20+at+5.05.25 PM.png" alt="Cross-Workspace design jam — competitive landscape and video player references" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -279,12 +316,12 @@
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/two+directions.png" alt="Direction 1 (contained timeline and controls) vs Direction 2 (open timeline)" class="w-full block rounded">
+      <img src="images/workspace-video-player/two+directions.png" alt="Direction 1 (contained timeline and controls) vs Direction 2 (open timeline)" class="w-full block rounded-2xl lightbox-img">
       <p class="text-xs text-muted mt-3 text-center">Direction 1 — Contained timeline and controls &nbsp;&nbsp;|&nbsp;&nbsp; Direction 2 — Open timeline</p>
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/4+up.gif" alt="Video player UI details - settings, timeline, volume, chapters" class="w-full block rounded">
+      <img src="images/workspace-video-player/4+up.gif" alt="Video player UI details - settings, timeline, volume, chapters" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -298,7 +335,7 @@
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/Screenshot+2025-07-13+at+2.44.03 PM.png" alt="Prototype of the new video player in Google Drive context" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-07-13+at+2.44.03 PM.png" alt="Prototype of the new video player in Google Drive context" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -329,7 +366,7 @@
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/Screenshot+2026-02-09+at+7.56.59 PM.png" alt="Design sprint outcome — pivoting from contained to open timeline" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2026-02-09+at+7.56.59 PM.png" alt="Design sprint outcome — pivoting from contained to open timeline" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -343,7 +380,7 @@
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/Screenshot+2025-01-19+at+11.03.27 AM.png" alt="What we learned — Better UX, User preference, More Responsive, Align Visual Design, More scalable" class="w-full block rounded">
+      <img src="images/workspace-video-player/Screenshot+2025-01-19+at+11.03.27 AM.png" alt="What we learned — Better UX, User preference, More Responsive, Align Visual Design, More scalable" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -362,7 +399,7 @@
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/04.png" alt="Final video player designs across contexts - chapters, PiP, multi-device" class="w-full block rounded">
+      <img src="images/workspace-video-player/04.png" alt="Final video player designs across contexts - chapters, PiP, multi-device" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -381,7 +418,7 @@
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/4+up-c2786fc1.gif" alt="Refined video player — settings, playback, volume, and chapter interactions" class="w-full block rounded">
+      <img src="images/workspace-video-player/4+up-c2786fc1.gif" alt="Refined video player — settings, playback, volume, and chapter interactions" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -439,5 +476,36 @@
     </nav>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+  <script>
+    const overlay = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.lightbox-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay || e.target.closest('.lightbox-close')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 </body>
 </html>

@@ -38,6 +38,43 @@
       }
     }
   </style>
+  <style>
+    .lightbox-img { cursor: pointer; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+    .lightbox-close svg { width: 20px; height: 20px; }
+  </style>
 </head>
 <body>
 
@@ -133,19 +170,19 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/PDF+Today.png" alt="PDF experience today" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+Today.png" alt="PDF experience today" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/workspace-pdf/PDF+1.png" alt="PDF improvement design 1" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+1.png" alt="PDF improvement design 1" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/workspace-pdf/PDF+2.png" alt="PDF improvement design 2" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+2.png" alt="PDF improvement design 2" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/workspace-pdf/PDF+Details.png" alt="PDF feature details" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+Details.png" alt="PDF feature details" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/workspace-pdf/PDF+menus.png" alt="PDF menus design" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+menus.png" alt="PDF menus design" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -167,7 +204,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/Screenshot+2025-07-02+at+7.45.07 PM.png" alt="Competitive audit comparison" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2025-07-02+at+7.45.07 PM.png" alt="Competitive audit comparison" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <hr class="border-t border-divider my-12">
@@ -190,7 +227,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/Screenshot+2025-07-02+at+7.59.17 PM.png" alt="Taxonomy card-sorting exercise" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2025-07-02+at+7.59.17 PM.png" alt="Taxonomy card-sorting exercise" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -204,7 +241,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/Screenshot+2025-07-02+at+8.00.45 PM.png" alt="Strategic placement framework" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2025-07-02+at+8.00.45 PM.png" alt="Strategic placement framework" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -218,7 +255,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/IA.png" alt="Information architecture alignment" class="w-full block rounded">
+      <img src="images/workspace-pdf/IA.png" alt="Information architecture alignment" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -232,7 +269,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/PDF+two+options.png" alt="Two IA direction options" class="w-full block rounded">
+      <img src="images/workspace-pdf/PDF+two+options.png" alt="Two IA direction options" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -246,7 +283,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/pdf+principles.png" alt="PDF design principles" class="w-full block rounded">
+      <img src="images/workspace-pdf/pdf+principles.png" alt="PDF design principles" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -260,7 +297,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/IA+Framework.png" alt="IA framework for unified navigation" class="w-full block rounded">
+      <img src="images/workspace-pdf/IA+Framework.png" alt="IA framework for unified navigation" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -274,13 +311,13 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/Toolbar.png" alt="Toolbar design" class="w-full block rounded">
+      <img src="images/workspace-pdf/Toolbar.png" alt="Toolbar design" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/workspace-pdf/Toolbars+short-term.png" alt="Short-term toolbar design" class="w-full block rounded">
+      <img src="images/workspace-pdf/Toolbars+short-term.png" alt="Short-term toolbar design" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/workspace-pdf/Toolbars+-+long+term.png" alt="Long-term toolbar vision" class="w-full block rounded">
+      <img src="images/workspace-pdf/Toolbars+-+long+term.png" alt="Long-term toolbar vision" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -298,7 +335,7 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/Menu+issues.png" alt="File menu issues" class="w-full block rounded">
+      <img src="images/workspace-pdf/Menu+issues.png" alt="File menu issues" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -312,10 +349,10 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/Screenshot+2026-02-09+at+8.11.33 AM.png" alt="File menu audit" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2026-02-09+at+8.11.33 AM.png" alt="File menu audit" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/workspace-pdf/short+term+pdf.png" alt="Short-term PDF design" class="w-full block rounded">
+      <img src="images/workspace-pdf/short+term+pdf.png" alt="Short-term PDF design" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -351,10 +388,10 @@
     </div>
 
     <div class="mb-12">
-      <img src="images/workspace-pdf/Screenshot+2025-07-03+at+1.54.07 PM.png" alt="Usability testing results" class="w-full block rounded">
+      <img src="images/workspace-pdf/Screenshot+2025-07-03+at+1.54.07 PM.png" alt="Usability testing results" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="mb-12">
-      <img src="images/workspace-pdf/save+button.gif" alt="Save button interaction" class="w-full block rounded">
+      <img src="images/workspace-pdf/save+button.gif" alt="Save button interaction" class="w-full block rounded-2xl lightbox-img">
     </div>
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
@@ -433,5 +470,36 @@
     </nav>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+  <script>
+    const overlay = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.lightbox-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay || e.target.closest('.lightbox-close')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 </body>
 </html>
