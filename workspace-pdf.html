@@ -79,7 +79,9 @@
 <body>
 
   <!-- Full-Screen Hero -->
-  <section class="min-h-screen relative flex flex-col overflow-hidden bg-[#34495e]">
+  <section class="min-h-screen relative flex flex-col overflow-hidden">
+    <!-- Background Image -->
+    <img src="images/workspace-pdf/PDF-hero-background.png" alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true">
     <!-- Nav -->
     <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
       <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
@@ -163,12 +165,15 @@
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Key Insights</div>
           <p class="text-[15px] text-body leading-[1.7] mb-3">While Workspace is best known for its native Editors, PDFs are:</p>
           <ul class="list-disc pl-5 mb-3">
-            <li class="text-[15px] text-body leading-[1.7] mb-2">#1 consumed file type in Workspace</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">1.7B weekly views across Drive</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>#1 consumed file type in Workspace</strong></li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>1.7B weekly views across Drive</strong></li>
             <li class="text-[15px] text-body leading-[1.7] mb-2">46% of all viewed files are PDFs</li>
           </ul>
           <p class="text-[15px] text-body leading-[1.7] mb-3">These insights reframed PDFs from a viewing problem into a core productivity opportunity at massive scale.</p>
-          <img src="images/workspace-pdf/opens-per-file.png" alt="Opens per file type data" class="w-full block rounded-2xl lightbox-img mt-4">
+          <p class="text-[13px] text-muted mb-3 mt-4">Opens per file type</p>
+          <div class="overflow-hidden rounded-2xl">
+            <img src="images/workspace-pdf/opens-per-file.png" alt="Opens per file type data" class="w-full block lightbox-img" style="margin-top: -8%; width: 100%;">
+          </div>
         </div>
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Problem</div>
@@ -519,22 +524,24 @@
     </div>
 
     <!-- ==================== OUTCOME ==================== -->
-    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
-      <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Landing metrics</h2>
-      </div>
-      <div class="pt-[18px] max-md:pt-0">
-        <div class="mb-10">
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Launched 6 features and established unified navigation framework across Drive's file view—impacts 1.7 billion weekly views.</p>
-          <ul class="list-disc pl-5 mb-3">
-            <li class="text-[15px] text-body leading-[1.7] mb-2">20% increase in CSAT: 74%</li>
-            <li class="text-[15px] text-body leading-[1.7] mb-2">7% decrease in DSAT: 12%</li>
-          </ul>
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+          <div>
+            <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Landing metrics</h2>
+          </div>
+          <div class="pt-[18px] max-md:pt-0">
+            <div class="mb-10">
+              <p class="text-[15px] text-body leading-[1.7] mb-3">Launched 6 features to close the competitive gap and established unified navigation framework across Drive's file view—impacts 1.7 billion weekly views.</p>
+              <ul class="list-disc pl-5 mb-3">
+                <li class="text-[15px] text-body leading-[1.7] mb-2">20% increase in CSAT: 74%</li>
+                <li class="text-[15px] text-body leading-[1.7] mb-2">7% decrease in DSAT: 12%</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <hr class="border-t border-divider my-12">
 
     <!-- ==================== WHAT I LEARNED ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
