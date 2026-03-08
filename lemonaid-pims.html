@@ -79,13 +79,13 @@
 <body>
 
   <!-- Full-Screen Hero -->
-  <section class="min-h-screen relative flex flex-col overflow-hidden bg-[#1b4332]">
+  <section class="min-h-screen relative flex flex-col overflow-hidden bg-[#1b4332] bg-cover bg-center" style="background-image: url('images/lemonaid-pims/PIM-hero-background.png');">
     <!-- Nav -->
     <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
-      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
+      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
       <nav>
-        <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
-        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">About Emily</a>
+        <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Emily</a>
       </nav>
     </header>
     <!-- Hero Content -->
@@ -93,9 +93,9 @@
       <div class="w-full flex items-center">
         <!-- Text -->
         <div class="pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
-          <p class="font-heading text-[13px] font-bold tracking-[1.5px] uppercase text-white/60 mb-5">Lemonaid Health</p>
-          <h1 class="font-nav text-[48px] font-bold text-white leading-[1.15] mb-6 max-md:text-[36px]">PIMS</h1>
-          <p class="text-[15px] text-white/80 leading-[1.7] mb-6">Lemonaid's mission centers on delivering affordable healthcare broadly. A critical infrastructure component for this care model is PIMS (patient information management system) — the platform doctors use to review and prescribe patient health care requests.</p>
+          <img src="images/lemonaid-pims/lemonaid-logo.svg" alt="Lemonaid Health" class="h-[40px] mb-5">
+          <h1 class="font-nav text-[48px] font-bold text-[#222] leading-[1.15] mb-6 max-md:text-[36px]">PIMS</h1>
+          <p class="text-[15px] text-[#222]/80 leading-[1.7] mb-6">Lemonaid's mission centers on delivering affordable healthcare broadly. A critical infrastructure component for this care model is PIMS (patient information management system) — the platform doctors use to review and prescribe patient health care requests.</p>
         </div>
         <!-- Hero Product Screenshot -->
         <div class="max-md:hidden flex-1 pl-16 -mr-[10%]">
@@ -105,7 +105,7 @@
     </div>
     <!-- Scroll Arrow -->
     <div class="relative z-10 pb-10 flex justify-center">
-      <a href="#content" class="text-white/60 hover:text-white transition-colors">
+      <a href="#content" class="text-[#222]/60 hover:text-[#222] transition-colors">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M6 9l6 6 6-6"/>
         </svg>
@@ -123,7 +123,7 @@
         <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Role</div>
         <p class="text-[15px] text-body leading-[1.7] mb-6">Research & UX Lead</p>
         <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Team</div>
-        <p class="text-[15px] text-body leading-[1.7]">1 Visual Designer (Steve Lyons)</p>
+        <p class="text-[15px] text-body leading-[1.7]">1 Visual Designer</p>
       </div>
       <div>
         <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Impact</div>
@@ -314,15 +314,25 @@
     <!-- ==================== OUTCOME ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Outcome</h2>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Launch Metrics</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">What I Learned</div>
-          <p class="text-[15px] text-body leading-[1.7] mb-3">Early feedback from the user was essential to understanding their mindset and needs. Making all relevant information accessible simplified the process for the doctors.</p>
           <p class="text-[15px] text-body leading-[1.7] mb-3">API improvements complemented design enhancements, substantially contributing to processing speed reduction.</p>
           <p class="text-[15px] text-body leading-[1.7] mb-3">Our goal was to reduce the average process time from 5 minutes to 1 minute. We got it down to 30 seconds.</p>
           <p class="text-[15px] text-body leading-[1.7] mb-3">The doctors were thrilled!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== WHAT I LEARNED ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">What I Learned</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Early feedback from the user was essential to understanding their mindset and needs. Making all relevant information accessible simplified the process for the doctors.</p>
         </div>
       </div>
     </div>
