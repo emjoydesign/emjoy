@@ -79,7 +79,7 @@
 <body>
 
   <!-- Full-Screen Hero -->
-  <section class="min-h-screen relative flex flex-col overflow-hidden bg-[#202124]">
+  <section class="min-h-screen relative flex flex-col overflow-hidden bg-[#202124] bg-cover bg-center" style="background-image: url('images/workspace-video-player/video-hero-background.png');">
     <!-- Nav -->
     <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
       <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
@@ -95,8 +95,7 @@
         <div class="pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
           <img src="images/drive-genai-organize/google-logo.png" alt="Google" class="h-[26px] w-auto mb-5 brightness-0 invert">
           <h1 class="font-nav text-[48px] font-bold text-white leading-[1.15] mb-6 max-md:text-[36px]">Workspace Video Player</h1>
-          <p class="text-[15px] text-white/80 leading-[1.7] mb-4">Redesigning the video playback experience across Google Workspace, improving how millions of users watch and interact with video content in Drive, Docs, and Slides.</p>
-          <p class="text-[15px] text-white/80 leading-[1.7] mb-6">Placeholder description coming soon.</p>
+          <p class="text-[15px] text-white/80 leading-[1.7] mb-6">Video is rapidly becoming a primary collaboration surface in Google Workspace. To support this shift, Drive needed to modernize its video player to enable seamless cross-product workflows. As Lead UX, I <strong class="text-white">successfully advocated for prioritizing a visual modernization ahead of other roadmap features</strong>, aligned teams across Workspace, and established a scalable design foundation for future capabilities. The redesign supports ~84 million weekly views and increased perceived modernity by 20%</p>
         </div>
         <!-- Hero Product Screenshot -->
         <div class="max-md:hidden flex-1 pl-16 -mr-[10%]">
@@ -129,9 +128,9 @@
       <div>
         <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">My Impact</div>
         <ul class="list-disc pl-5">
-          <li class="text-[15px] text-body leading-[1.7] mb-2">~84M weekly views supported</li>
-          <li class="text-[15px] text-body leading-[1.7] mb-2">CSAT increased from 56% &rarr; 75%</li>
-          <li class="text-[15px] text-body leading-[1.7]">DSAT decreased from 21% &rarr; 15%</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">~84M weekly views</li>
+
+          <li class="text-[15px] text-body leading-[1.7]">Increased modernity by 20%</li>
         </ul>
       </div>
       <div>
@@ -139,7 +138,8 @@
         <ul class="list-disc pl-5">
           <li class="text-[15px] text-body leading-[1.7] mb-2">Defined a multi-year UX Video Playback Strategy to modernize the Workspace Playback experience — UI refresh was the first project</li>
           <li class="text-[15px] text-body leading-[1.7] mb-2">Successfully secured buy-in from Workspace leads to prioritize a visual update ahead of other critical features</li>
-          <li class="text-[15px] text-body leading-[1.7]">Drove alignment across Workspace team to ensure we built a scalable system</li>
+          <li class="text-[15px] text-body leading-[1.7] mb-2">Drove alignment across Workspace team to ensure we built a scalable system</li>
+          <li class="text-[15px] text-body leading-[1.7]">Defined interactions, contributed to visual design explorations, created prototypes, and delivered accessibility specifications.</li>
         </ul>
       </div>
         </div>
@@ -230,13 +230,7 @@
 
     <!-- Full-width process images -->
     <div class="my-12">
-      <img src="images/workspace-video-player/video process 1.png" alt="Video process 1" class="w-full block rounded-2xl lightbox-img">
-    </div>
-    <div class="my-12">
       <img src="images/workspace-video-player/video process 2.png" alt="Video process 2" class="w-full block rounded-2xl lightbox-img">
-    </div>
-    <div class="my-12">
-      <img src="images/workspace-video-player/video process 3.png" alt="Video process 3" class="w-full block rounded-2xl lightbox-img">
     </div>
     <div class="my-12">
       <img src="images/workspace-video-player/video process 4.png" alt="Video process 4" class="w-full block rounded-2xl lightbox-img">
@@ -414,7 +408,7 @@
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/4+up.gif" alt="Video player UI details - settings, timeline, volume, chapters" class="w-full block rounded-2xl lightbox-img" style="clip-path: inset(0 1px 0 1px);">
+      <img src="images/workspace-video-player/4+up.gif" alt="Video player UI details - settings, timeline, volume, chapters" class="w-full block rounded-2xl lightbox-img" style="clip-path: inset(1px 1px 1px 1px);">
     </div>
 
     <!-- ==================== FINAL DESIGN ==================== -->
@@ -426,14 +420,18 @@
         <h2 class="font-nav text-[36px] font-bold text-white leading-[1.15] max-md:text-[28px]">Final Design</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-white/50 mb-3">Large Video Player</div>
+          <p class="text-[15px] text-white/80 leading-[1.7] mb-3">Large video players are typically used for viewing videos on larger screens, such as in Drive or Vids. They support most core playback features, though some controls may be truncated depending on the size of the player.</p>
+        </div>
       </div>
     </div>
 
     <div class="my-12">
-      <img src="images/workspace-video-player/video.gif" alt="Final video player design — interaction demo" class="w-full block rounded-2xl lightbox-img">
-    </div>
-    <div class="my-12">
-      <img src="images/workspace-video-player/Screenshot+2025-07-02+at+11.00.15 AM.png" alt="Final video player design — across devices" class="w-full block rounded-2xl lightbox-img">
+      <p class="text-xs text-white/40 mb-3 text-center">Large Player</p>
+      <div class="relative w-full rounded-2xl overflow-hidden" style="padding-bottom: 56.25%;">
+        <iframe src="https://drive.google.com/file/d/1gMLzKmX3KQrVEShTV90_5BCJCxEKRrdg/preview" class="absolute inset-0 w-full h-full" allow="autoplay" allowfullscreen></iframe>
+      </div>
     </div>
       </div>
     </div>
@@ -447,7 +445,7 @@
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
-          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Post-Launch Metrics</div>
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Launch Metrics</div>
           <ul class="list-disc pl-5 mb-3">
             <li class="text-[15px] text-body leading-[1.7] mb-2">Satisfaction stays the same</li>
             <li class="text-[15px] text-body leading-[1.7] mb-2">Dissatisfaction decreases by 10%</li>
@@ -460,6 +458,19 @@
           <div class="text-[15px] italic text-body leading-[1.7] mb-5 pl-5 border-l-[3px] border-accent">"I have a good experience with viewing videos in Drive of late. In fact, I like the new update, the look, especially with the function of letting you pick the playback speed"</div>
           <div class="text-[15px] italic text-body leading-[1.7] mb-5 pl-5 border-l-[3px] border-accent">"The service has been impeccable lately! This player looks so cool. Keep going!"</div>
           <div class="text-[15px] italic text-body leading-[1.7] mb-5 pl-5 border-l-[3px] border-accent">"I like it! It's not like YouTube anymore; I think it works better and it reflects a new personality, is modern, and could improve the experience for users. I really like it—good job!"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== WHAT I LEARNED ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4 mt-16">
+      <div>
+        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">What I Learned</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Visual modernization can be difficult to prioritize because feature work naturally gets more attention and clearer impact. But this project reinforced how important it is to keep evolving the visual system over time so products don't gradually start to feel dated.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">I also learned that visual updates don't always immediately move satisfaction metrics, which is important to set expectations with cross-functional partners and junior teammates. That said, these improvements create the foundation for future work — in our case, the modernization set the stage for new features that ultimately drove a 20% increase in satisfaction.</p>
         </div>
       </div>
     </div>
