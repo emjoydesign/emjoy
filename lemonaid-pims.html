@@ -74,6 +74,16 @@
     }
     .lightbox-close:hover { background: rgba(255,255,255,0.3); }
     .lightbox-close svg { width: 20px; height: 20px; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .hero-text { animation: fadeUp 0.8s ease-out both; }
+    .hero-image { animation: fadeRight 0.8s ease-out 0.2s both; }
   </style>
 </head>
 <body>
@@ -92,13 +102,13 @@
     <div class="relative z-10 flex-1 flex items-center">
       <div class="w-full flex items-center">
         <!-- Text -->
-        <div class="pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
+        <div class="hero-text pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
           <img src="images/lemonaid-pims/lemonaid-logo.svg" alt="Lemonaid Health" class="h-[40px] mb-5">
           <h1 class="font-nav text-[48px] font-bold text-[#222] leading-[1.15] mb-6 max-md:text-[36px]">PIMS</h1>
           <p class="text-[15px] text-[#222]/80 leading-[1.7] mb-6">Lemonaid's mission centers on delivering affordable healthcare broadly. A critical infrastructure component for this care model is PIMS (patient information management system) — the platform doctors use to review and prescribe patient health care requests.</p>
         </div>
         <!-- Hero Product Screenshot -->
-        <div class="max-md:hidden flex-1 pl-16 -mr-[10%]">
+        <div class="hero-image max-md:hidden flex-1 pl-16 -mr-[10%]">
           <img src="images/lemonaid-pims/Portfolio-PIMS-01.png" alt="PIMS — provider management interface" class="w-full block rounded-l-2xl shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
         </div>
       </div>
@@ -344,12 +354,8 @@
     <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
       <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
       <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>
-      <a href="gemini-video.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Gemini + Video</a>
       <a href="workspace-pdf.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace PDF</a>
-      <a href="lemonaid.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid</a>
       <a href="lemonaid-pims.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid PIMS</a>
-      <a href="planned-parenthood.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Planned Parenthood</a>
-      <a href="brightscope.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">BrightScope Beacon</a>
     </nav>
   </footer>
 

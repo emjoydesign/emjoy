@@ -74,6 +74,16 @@
     }
     .lightbox-close:hover { background: rgba(255,255,255,0.3); }
     .lightbox-close svg { width: 20px; height: 20px; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .hero-text { animation: fadeUp 0.8s ease-out both; }
+    .hero-image { animation: fadeRight 0.8s ease-out 0.2s both; }
   </style>
 </head>
 <body>
@@ -84,26 +94,26 @@
     <img src="images/drive-genai-organize/Gradient.png" alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true">
     <!-- Nav -->
     <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
-      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
+      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-black no-underline">Emily Thomas</a>
       <nav>
-        <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
-        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">About Emily</a>
+        <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-black no-underline ml-[30px] hover:opacity-60">Work</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-black no-underline ml-[30px] hover:opacity-60">About Emily</a>
       </nav>
     </header>
     <!-- Hero Content -->
     <div class="relative z-10 flex-1 flex items-center">
       <div class="w-full flex items-center">
         <!-- Text -->
-        <div class="pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
+        <div class="hero-text pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
           <img src="images/drive-genai-organize/google-logo.png" alt="Google" class="h-[26px] w-auto mb-5 brightness-0">
-          <h1 class="font-nav text-[48px] font-bold text-black leading-[1.15] mb-6 max-md:text-[36px]">Drive AI Organizer</h1>
+          <h1 class="font-nav text-[48px] font-bold text-black leading-[1.15] mb-6 max-md:text-[36px]">Drive AI File Organizer</h1>
           <p class="text-[15px] text-black leading-[1.7] mb-4">In 2025/2026, we reimagined Google Drive as an "Assistive Librarian" — transforming file storage into an intelligent agent that proactively helps users find, analyze, and <strong>organize</strong> their files.</p>
           <p class="text-[15px] text-black leading-[1.7] mb-6">As lead designer for the organize initiative, I spearheaded the 0→1 vision for an AI file organizer. With 88% of users organizing weekly, we focused on high-impact, low-risk actions to eliminate manual friction. This initiative successfully validated market fit, achieving a 97% usability rating.</p>
 
         </div>
         <!-- Hero Product Screenshot -->
-        <div class="max-md:hidden flex-1 pl-16 -mr-[10%]">
-          <img src="images/drive-genai-organize/Drive AI Organizer.png" alt="Drive AI Organizer — Organize my files interface" class="w-full block rounded-l-2xl shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
+        <div class="hero-image max-md:hidden flex-1 pl-16 -mr-[10%]">
+          <img src="images/drive-genai-organize/Drive AI Organizer.png" alt="Drive AI File Organizer — Organize my files interface" class="w-full block rounded-l-2xl shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
         </div>
       </div>
     </div>
@@ -443,12 +453,8 @@
     <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
       <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
       <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>
-      <a href="gemini-video.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Gemini + Video</a>
       <a href="workspace-pdf.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace PDF</a>
-      <a href="lemonaid.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid</a>
       <a href="lemonaid-pims.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid PIMS</a>
-      <a href="planned-parenthood.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Planned Parenthood</a>
-      <a href="brightscope.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">BrightScope Beacon</a>
     </nav>
   </footer>
 
