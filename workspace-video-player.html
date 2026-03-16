@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="view-transition" content="same-origin">
   <title>Workspace Video Player — Emily Thomas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +21,9 @@
           },
           fontFamily: {
             sans: ['proxima-nova', 'Proxima Nova', 'system-ui', '-apple-system', 'sans-serif'],
-            heading: ['"Open Sans"', 'sans-serif'],
-            serif: ['"EB Garamond"', 'serif'],
-            nav: ['"Lato"', 'sans-serif'],
+            heading: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
+            serif: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
+            nav: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
           },
         },
       },
@@ -82,20 +83,55 @@
       from { opacity: 0; transform: translateX(30px); }
       to { opacity: 1; transform: translateX(0); }
     }
-    .hero-text { animation: fadeUp 0.8s ease-out both; }
-    .hero-image { animation: fadeRight 0.8s ease-out 0.2s both; }
+    .hero-text { animation: fadeUp 0.8s ease-out 0.5s both; }
+    .hero-image { animation: fadeRight 0.8s ease-out 0.7s both; }
+    /* Group container morphs size/position — the "expanding box" */
+    ::view-transition-group(hero-drive),
+    ::view-transition-group(hero-pdf),
+    ::view-transition-group(hero-video),
+    ::view-transition-group(hero-pims) {
+      animation-duration: 0.6s;
+      animation-timing-function: cubic-bezier(0.4, 0, 0, 1);
+    }
+    /* Card snapshot fades out quickly so expansion is the focus */
+    ::view-transition-old(hero-drive),
+    ::view-transition-old(hero-pdf),
+    ::view-transition-old(hero-video),
+    ::view-transition-old(hero-pims) {
+      animation-duration: 0.15s;
+      animation-timing-function: ease-out;
+    }
+    /* Hero snapshot fades in mid-expansion */
+    ::view-transition-new(hero-drive),
+    ::view-transition-new(hero-pdf),
+    ::view-transition-new(hero-video),
+    ::view-transition-new(hero-pims) {
+      animation-duration: 0.3s;
+      animation-delay: 0.15s;
+      animation-timing-function: ease-in;
+    }
+    /* Page content fades cleanly */
+    ::view-transition-old(root) {
+      animation-duration: 0.25s;
+      animation-timing-function: ease-out;
+    }
+    ::view-transition-new(root) {
+      animation-duration: 0.35s;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-in;
+    }
   </style>
 </head>
 <body>
 
   <!-- Full-Screen Hero -->
-  <section class="min-h-screen relative flex flex-col overflow-hidden bg-[#202124] bg-cover bg-center" style="background-image: url('images/workspace-video-player/video-hero-background.png');">
+  <section class="min-h-screen relative flex flex-col overflow-hidden" style="background: linear-gradient(135deg, #202124, #3a3a3a); view-transition-name: hero-video;">
     <!-- Nav -->
     <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
       <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
       <nav>
         <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
-        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">About Emily</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">About Me</a>
       </nav>
     </header>
     <!-- Hero Content -->
@@ -161,7 +197,7 @@
     <!-- ==================== CONTEXT ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Context</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Context</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -183,7 +219,7 @@
             <li class="text-[15px] text-body leading-[1.7] mb-2">Poor feature discoverability</li>
             <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Looking like YouTube confused users</strong></li>
           </ul>
-          <div class="text-[15px] italic text-body leading-[1.7] mt-6 mb-5 pl-5 border-l-[3px] border-accent">"Looks like YouTube but doesn't entirely behave like it"</div>
+          <div class="text-[15px] italic text-body leading-[1.7] mt-6 mb-5">"Looks like YouTube but doesn't entirely behave like it"</div>
         </div>
       </div>
     </div>
@@ -228,7 +264,7 @@
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-white leading-[1.15] max-md:text-[28px]">Design Process</h2>
+        <h2 class="font-heading text-[36px] font-bold text-white leading-[1.15] max-md:text-[28px]">Design Process</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -348,7 +384,7 @@
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4 mt-16">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Defined Principles</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Defined Principles</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
       </div>
@@ -408,7 +444,7 @@
 
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4 mt-16">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Refine Design</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Refine Design</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -425,18 +461,28 @@
     <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-black py-16 mt-12 mb-0">
       <div class="max-w-[1100px] mx-auto px-[30px]">
 
-    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4 mb-12">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-white leading-[1.15] max-md:text-[28px]">Final Design</h2>
+        <h2 class="font-heading text-[36px] font-bold text-white leading-[1.15] max-md:text-[28px]">Final Design</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
       </div>
     </div>
 
-    <div class="my-12">
+    <p class="text-[13px] text-white/40 mb-3 text-center">Desktop</p>
+    <div class="mb-12">
       <div class="relative w-full rounded-2xl overflow-hidden" style="padding-bottom: 56.25%;">
         <iframe src="https://drive.google.com/file/d/1gMLzKmX3KQrVEShTV90_5BCJCxEKRrdg/preview" class="absolute inset-0 w-full h-full" allow="autoplay" allowfullscreen></iframe>
       </div>
+    </div>
+
+    <p class="text-[13px] text-white/40 mb-3 text-center">Mobile</p>
+    <div class="mb-12">
+      <img src="images/workspace-video-player/mobile.gif" alt="Video player mobile design" class="w-full block rounded-2xl lightbox-img">
+    </div>
+
+    <div class="my-12">
+      <img src="images/workspace-video-player/video.png" alt="Final video player design" class="w-full block rounded-2xl lightbox-img">
     </div>
       </div>
     </div>
@@ -446,7 +492,7 @@
     <!-- ==================== OUTCOME ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Outcome</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Outcome</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -460,9 +506,9 @@
         </div>
         <div class="mb-10">
           <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">What People Said</div>
-          <div class="text-[15px] italic text-body leading-[1.7] mb-5 pl-5 border-l-[3px] border-accent">"I have a good experience with viewing videos in Drive of late. In fact, I like the new update, the look, especially with the function of letting you pick the playback speed"</div>
-          <div class="text-[15px] italic text-body leading-[1.7] mb-5 pl-5 border-l-[3px] border-accent">"The service has been impeccable lately! This player looks so cool. Keep going!"</div>
-          <div class="text-[15px] italic text-body leading-[1.7] mb-5 pl-5 border-l-[3px] border-accent">"I like it! It's not like YouTube anymore; I think it works better and it reflects a new personality, is modern, and could improve the experience for users. I really like it—good job!"</div>
+          <div class="text-[15px] italic text-body leading-[1.7] mb-5">"I have a good experience with viewing videos in Drive of late. In fact, I like the new update, the look, especially with the function of letting you pick the playback speed"</div>
+          <div class="text-[15px] italic text-body leading-[1.7] mb-5">"The service has been impeccable lately! This player looks so cool. Keep going!"</div>
+          <div class="text-[15px] italic text-body leading-[1.7] mb-5">"I like it! It's not like YouTube anymore; I think it works better and it reflects a new personality, is modern, and could improve the experience for users. I really like it—good job!"</div>
         </div>
       </div>
     </div>
@@ -470,7 +516,7 @@
     <!-- ==================== WHAT I LEARNED ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4 mt-16">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">What I Learned</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">What I Learned</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">

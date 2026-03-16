@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="view-transition" content="same-origin">
   <title>Lemonaid PIMS — Emily Thomas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +21,9 @@
           },
           fontFamily: {
             sans: ['proxima-nova', 'Proxima Nova', 'system-ui', '-apple-system', 'sans-serif'],
-            heading: ['"Open Sans"', 'sans-serif'],
-            serif: ['"EB Garamond"', 'serif'],
-            nav: ['"Lato"', 'sans-serif'],
+            heading: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
+            serif: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
+            nav: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
           },
         },
       },
@@ -82,20 +83,38 @@
       from { opacity: 0; transform: translateX(30px); }
       to { opacity: 1; transform: translateX(0); }
     }
-    .hero-text { animation: fadeUp 0.8s ease-out both; }
-    .hero-image { animation: fadeRight 0.8s ease-out 0.2s both; }
+    .hero-text { animation: fadeUp 0.8s ease-out 0.35s both; }
+    .hero-image { animation: fadeRight 0.8s ease-out 0.55s both; }
+    ::view-transition-old(hero-drive),
+    ::view-transition-old(hero-pdf),
+    ::view-transition-old(hero-video),
+    ::view-transition-old(hero-pims) {
+      animation-duration: 0.4s;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    ::view-transition-new(hero-drive),
+    ::view-transition-new(hero-pdf),
+    ::view-transition-new(hero-video),
+    ::view-transition-new(hero-pims) {
+      animation-duration: 0.4s;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.3s;
+    }
   </style>
 </head>
 <body>
 
   <!-- Full-Screen Hero -->
-  <section class="min-h-screen relative flex flex-col overflow-hidden bg-[#1b4332] bg-cover bg-center" style="background-image: url('images/lemonaid-pims/PIM-hero-background.png');">
+  <section class="min-h-screen relative flex flex-col overflow-hidden" style="background: linear-gradient(135deg, #51e185, #77ebe5); view-transition-name: hero-pims;">
     <!-- Nav -->
     <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
       <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
       <nav>
         <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
-        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Emily</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Me</a>
       </nav>
     </header>
     <!-- Hero Content -->
@@ -155,7 +174,7 @@
     <!-- ==================== CONTEXT ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Context</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Context</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -176,7 +195,7 @@
     <!-- ==================== DESIGN PROCESS ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Design Process</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Design Process</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -282,7 +301,7 @@
     <!-- ==================== FINAL DESIGN ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Final Design</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Final Design</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
       </div>
@@ -324,7 +343,7 @@
     <!-- ==================== OUTCOME ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Launch Metrics</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Launch Metrics</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
@@ -338,7 +357,7 @@
     <!-- ==================== WHAT I LEARNED ==================== -->
     <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
       <div>
-        <h2 class="font-nav text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">What I Learned</h2>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">What I Learned</h2>
       </div>
       <div class="pt-[18px] max-md:pt-0">
         <div class="mb-10">
