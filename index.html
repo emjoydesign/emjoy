@@ -37,6 +37,9 @@
     }
   </style>
   <style>
+    @media (max-width: 1100px) {
+      .hero-heading { max-width: 100% !important; }
+    }
     /* Group container morphs size/position — the "expanding box" */
     ::view-transition-group(hero-drive),
     ::view-transition-group(hero-pdf),
@@ -82,13 +85,14 @@
     <nav>
       <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
       <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Me</a>
+      <a href="mailto:emily@emjoydesign.com" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] border border-black rounded-full px-[16px] py-[8px] hover:opacity-60">Say Hi</a>
     </nav>
   </header>
 
   <!-- Hero -->
   <main class="px-[60px] max-md:px-5">
     <div class="pt-[100px] pb-[36px] text-left max-md:pt-[100px] max-md:pb-[50px]">
-      <p class="font-serif text-[56px] font-bold text-body leading-[1.0] max-w-[66%] uppercase max-md:text-[32px]">I'm a Product Designer shaping AI-powered workflows &amp; large-scale systems</p>
+      <p class="hero-heading font-serif text-[56px] font-bold text-body leading-[1.0] max-w-[66%] uppercase max-md:text-[32px]">I'm a Product Designer shaping AI-powered workflows &amp; large-scale systems</p>
     </div>
 
     <!-- Project Grid -->
@@ -117,12 +121,6 @@
         </div>
         <p class="font-nav text-[13px] font-bold text-[#222] group-hover:opacity-60 transition-opacity">Lemonaid PIMS</p>
       </a>
-      <div class="block">
-        <div class="overflow-hidden rounded mb-1 aspect-[4/3] bg-[#f0f0f0]"></div>
-      </div>
-      <div class="block">
-        <div class="overflow-hidden rounded mb-1 aspect-[4/3] bg-[#f0f0f0]"></div>
-      </div>
     </div>
   </main>
 
