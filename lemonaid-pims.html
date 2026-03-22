@@ -112,12 +112,28 @@
     <!-- Nav -->
     <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
       <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
-      <nav>
+      <nav class="max-md:hidden">
         <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
         <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Me</a>
         <a href="mailto:emily@emjoydesign.com" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] border border-black rounded-full px-[16px] py-[8px] hover:opacity-60">Say Hi</a>
       </nav>
+      <!-- Mobile hamburger -->
+      <button class="hidden max-md:block" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </header>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-[60] flex flex-col px-5 py-[30px]">
+      <div class="flex justify-between items-center mb-10">
+        <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
+        <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Close menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+        </button>
+      </div>
+      <a href="index.html" class="font-heading text-[24px] font-semibold uppercase text-[#222] no-underline mb-6">Work</a>
+      <a href="about.html" class="font-heading text-[24px] font-semibold uppercase text-[#222] no-underline mb-6">About Me</a>
+      <a href="mailto:emily@emjoydesign.com" class="font-heading text-[24px] font-semibold uppercase text-[#222] no-underline mb-6">Say Hi</a>
+    </div>
     <!-- Hero Content -->
     <div class="relative z-10 flex-1 flex items-center">
       <div class="w-full flex items-center">
