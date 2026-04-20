@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="view-transition" content="same-origin">
   <title>Emily Thomas — Product Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,6 +137,12 @@
           <img src="images/lemonaid-pims/Portfolio-PIMS-01.png" alt="Lemonaid PIMS" class="max-w-[80%] max-h-[80%] object-contain rounded-lg group-hover:scale-105 transition-transform duration-300" style="filter: drop-shadow(0 4px 24px rgba(0,0,0,0.2));">
         </div>
         <p class="font-nav text-[13px] font-bold text-[#222] group-hover:opacity-60 transition-opacity">Lemonaid PIMS<br><span class="font-normal">Transforming Doctor Workflows at Scale</span></p>
+      </a>
+      <a href="persistent-conversations.html" class="group block no-underline" onclick="event.preventDefault(); var pw = prompt('This project is password protected. Enter password:'); if(pw && pw.toLowerCase()==='blue'){sessionStorage.setItem('pc-auth','true'); window.location.href='persistent-conversations.html'}">
+        <div class="overflow-hidden rounded mb-1 aspect-[4/3] relative" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); view-transition-name: hero-conversations;">
+          <img src="images/persistent-conversation/gemkick.png" alt="Persistent Conversations" class="absolute top-[50px] left-[15%] w-[70%] max-w-none group-hover:scale-105 transition-transform duration-300" style="filter: drop-shadow(0 4px 24px rgba(0,0,0,0.2));">
+        </div>
+        <p class="font-nav text-[13px] font-bold text-[#222] group-hover:opacity-60 transition-opacity">Workspace Persistent Conversations<br><span class="font-normal">Workspace Gemini Standardization</span></p>
       </a>
     </div>
   </main>

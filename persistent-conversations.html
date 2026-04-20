@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="view-transition" content="same-origin">
+  <title>Persistent Conversations — Emily Thomas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#c799d1',
+            body: '#333',
+            muted: '#8b8989',
+            divider: '#e0e0e0',
+          },
+          fontFamily: {
+            sans: ['proxima-nova', 'Proxima Nova', 'system-ui', '-apple-system', 'sans-serif'],
+            heading: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
+            serif: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
+            nav: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    html {
+      scroll-behavior: smooth;
+    }
+    @layer base {
+      body {
+        @apply font-sans text-[15px] text-muted bg-white antialiased;
+      }
+    }
+  </style>
+  <style>
+    .lightbox-img { cursor: pointer; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+    .lightbox-close svg { width: 20px; height: 20px; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .hero-text { animation: fadeUp 0.8s ease-out 0.35s both; }
+    .hero-image { animation: fadeRight 0.8s ease-out 0.55s both; }
+    ::view-transition-old(hero-conversations) {
+      animation-duration: 0.4s;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    ::view-transition-new(hero-conversations) {
+      animation-duration: 0.4s;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Password Gate -->
+  <div id="password-gate" class="fixed inset-0 z-[100] bg-white flex items-center justify-center">
+    <div class="text-center px-5">
+      <h2 class="font-heading text-[13px] font-bold tracking-[1.5px] uppercase text-[#222] mb-6">This project is password protected</h2>
+      <form onsubmit="event.preventDefault(); if(document.getElementById('pw').value.toLowerCase()==='blue'){document.getElementById('password-gate').style.display='none';sessionStorage.setItem('pc-auth','true')}else{document.getElementById('pw-error').style.display='block'}">
+        <input id="pw" type="password" placeholder="Enter password" class="border border-[#ccc] rounded-full px-[16px] py-[8px] text-[15px] text-body outline-none focus:border-[#222] w-[250px] text-center">
+        <button type="submit" class="ml-2 font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] border border-black rounded-full px-[16px] py-[8px] hover:opacity-60">Enter</button>
+        <p id="pw-error" class="text-[13px] text-red-500 mt-3" style="display:none">Incorrect password</p>
+      </form>
+    </div>
+  </div>
+  <script>
+    if(sessionStorage.getItem('pc-auth')==='true'){document.getElementById('password-gate').style.display='none'}
+  </script>
+
+  <!-- Full-Screen Hero -->
+  <section class="min-h-screen relative flex flex-col overflow-hidden" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); view-transition-name: hero-conversations;">
+    <!-- Nav -->
+    <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
+      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
+      <nav class="max-md:hidden">
+        <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">Work</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] hover:opacity-60">About Me</a>
+        <a href="mailto:emily@emjoydesign.com" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-white no-underline ml-[30px] border border-white rounded-full px-[16px] py-[8px] hover:opacity-60">Say Hi</a>
+      </nav>
+      <!-- Mobile hamburger -->
+      <button class="hidden max-md:block" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </header>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-[#222] z-[60] flex flex-col px-5 py-[30px]">
+      <div class="flex justify-between items-center mb-10">
+        <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-white no-underline">Emily Thomas</a>
+        <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Close menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+        </button>
+      </div>
+      <a href="index.html" class="font-heading text-[24px] font-semibold uppercase text-white no-underline mb-6">Work</a>
+      <a href="about.html" class="font-heading text-[24px] font-semibold uppercase text-white no-underline mb-6">About Me</a>
+      <a href="mailto:emily@emjoydesign.com" class="font-heading text-[24px] font-semibold uppercase text-white no-underline mb-6">Say Hi</a>
+    </div>
+    <!-- Hero Content -->
+    <div class="relative z-10 flex-1 flex items-center">
+      <div class="w-full flex items-center">
+        <!-- Text -->
+        <div class="hero-text pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
+          <img src="images/drive-genai-organize/google-logo.png" alt="Google" class="h-[26px] w-auto mb-5 brightness-0 invert">
+          <h1 class="font-nav text-[48px] font-bold text-white leading-[1.15] mb-6 max-md:text-[36px]">Workspace Persistent Conversations<br><span class="text-[30px] leading-[1] max-md:text-[22px]" style="font-weight: 500; line-height: 1.15; display: inline-block; margin-top: 4px;">Workspace Gemini Standardization</span></h1>
+          <p class="text-[15px] text-white/80 leading-[1.7] mb-6">As Gemini rolled out across Workspace, a critical issue emerged: <strong class="text-white">the same AI behaved differently across products and surfaces</strong>—creating confusion and breaking user trust. I led the research and design exploration to define how Gemini conversations should persist across Workspace products, establishing a framework that would enable seamless, cross-product AI workflows.</p>
+        </div>
+        <!-- Hero Product Screenshot -->
+        <div class="hero-image max-md:hidden flex-1 pl-16 -mr-[16px]">
+          <img src="images/persistent-conversation/cross-prod-flow.gif" alt="Cross-product Gemini conversation flow" class="w-full block rounded-l-2xl shadow-[0_8px_40px_rgba(0,0,0,0.15)]" style="clip-path: inset(0 0 1px 0);">
+        </div>
+      </div>
+    </div>
+    <!-- Scroll Arrow -->
+    <div class="relative z-10 pb-10 flex justify-center">
+      <a href="#content" class="text-white/60 hover:text-white transition-colors">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <main id="content" class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
+
+    <div class="pt-20 max-md:pt-10"></div>
+
+    <!-- ==================== CONTEXT ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Context</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Business Goal</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">In 2025, Google Workspace set out to lead in AI-powered productivity by introducing an assistive AI side panel across products. The goal was to enable users to <strong>seamlessly find, analyze, and act on content using Gemini</strong>—no matter where work happens.</p>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Insight</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">As Gemini rolled out across Workspace, a critical issue emerged:</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3"><strong>The same AI behaved differently across products and surfaces</strong>—creating confusion and breaking user trust.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Users expected a consistent, continuous AI experience, but instead encountered fragmented interactions depending on where they were (Drive, Gmail, Docs, etc.).</p>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Problem</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">We needed to define how conversations should behave across:</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-1"><strong>Surfaces within Drive</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">File list → Overlay viewer → Standalone tab</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-1"><strong>Cross-product journeys</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">e.g. Gmail → Drive → Docs → Sheets</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Two key questions emerged:</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">What should happen to a conversation when users move between surfaces or products?</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">When users return to a previous app, should the conversation continue, reset, or branch?</li>
+          </ul>
+          <img src="images/persistent-conversation/problem.png" alt="Problem visualization" class="w-full block rounded-2xl lightbox-img mt-4">
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Hypothesis</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Users want conversations to <strong>persist across Workspace</strong> to support seamless, cross-product workflows—but expectations around returning to previous contexts were unclear.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <div class="grid grid-cols-2 gap-8 max-md:grid-cols-1">
+          <div>
+            <p class="text-[13px] text-[#555] mb-3 text-center">Before</p>
+            <img src="images/persistent-conversation/panel-now.gif" alt="Panel behavior before" class="w-full block rounded-2xl lightbox-img">
+          </div>
+          <div>
+            <p class="text-[13px] text-[#555] mb-3 text-center">After</p>
+            <img src="images/persistent-conversation/panel-later.gif" alt="Panel behavior after" class="w-full block rounded-2xl lightbox-img">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== EXPLORATION ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Exploration</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Conversation Models</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">I defined three models to evaluate:</p>
+        </div>
+        <div class="mb-10">
+          <p class="text-[15px] text-body leading-[1.7] mb-1"><strong>1. Always Mirror</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">A single conversation persists and mirrors across all apps and surfaces—following the user like an assistant.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-1"><strong>2. Mirror When Contextually Relevant</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Conversations persist and mirror only when they are part of a clear user journey, such as interacting with a file or entity tied to the task.</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Opening a new tab without context → Zero state</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Returning to an existing tab → Previous conversation is preserved</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Contextual actions (e.g. clicking a file, chip, or entity) → Continue the same conversation</li>
+          </ul>
+          <p class="text-[15px] text-body leading-[1.7] mb-1"><strong>3. Always Branch</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Each new surface or app creates a new branch of the conversation, even if related.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen py-0 -mt-8">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <img src="images/persistent-conversation/conversation-model.png" alt="Conversation models exploration" class="w-full block rounded-2xl lightbox-img">
+      </div>
+    </div>
+
+    <hr class="border-t border-divider my-12">
+
+    <!-- ==================== EVALUATION ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Evaluation</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <p class="text-[15px] text-body leading-[1.7] mb-3">We tested these models through two cross-product workflows:</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Track receipts:</strong> Gmail → Drive → Sheets → Gmail</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Analyze a sales meeting:</strong> Gmail → Drive → Docs → Gmail</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-12">
+      <p class="text-[13px] text-[#555] mb-3">Password: 123</p>
+      <div class="relative w-full overflow-hidden" style="padding-bottom: 56.25%;">
+        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" class="absolute inset-0 w-full h-full" src="https://embed.figma.com/proto/OB466cXXyq1fCN2W4R53bu/Gemkick-Persist---Mirrored-Convo?node-id=313-112828&p=f&viewport=268%2C534%2C0.03&scaling=scale-down&content-scaling=fixed&starting-point-node-id=313%3A112828&page-id=313%3A112827&show-proto-sidebar=1&embed-host=share" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- ==================== OUTCOME ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4 mt-12">
+      <div></div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <p class="text-[15px] text-body leading-[1.7] mb-3"><strong>Always Mirror won—decisively.</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">We established a clear product direction:</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Conversations should <strong>persist and mirror across all Workspace products and surfaces</strong>, enabling a seamless, assistant-like experience.</p>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Key Findings</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-1"><strong>1. Strong Mental Model: Gemini as an Assistant</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Users consistently viewed Gemini as a persistent assistant, not a tool tied to a single surface.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-1"><strong>2. Preference for Continuity</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Participants overwhelmingly preferred a single, continuous conversation that follows them across apps.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-1"><strong>3. "Unexpected Delight" Effect</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Even users who initially assumed they would prefer separation changed their minds after experiencing continuity.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== DIRECTIONAL DESIGN ==================== -->
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4 mb-12">
+          <div>
+            <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Design Considerations</h2>
+          </div>
+          <div class="pt-[18px] max-md:pt-0">
+            <p class="text-[15px] text-body leading-[1.7] mb-3">The side panel should:</p>
+            <ul class="list-disc pl-5 mb-3">
+              <li class="text-[15px] text-body leading-[1.7] mb-2">Clearly start a new conversation at any time</li>
+              <li class="text-[15px] text-body leading-[1.7] mb-2">Seamlessly access conversation history across apps</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mb-12">
+          <img src="images/persistent-conversation/panel-design.png" alt="Panel design" class="w-full block rounded-2xl lightbox-img">
+        </div>
+
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4" style="margin-top: 100px;">
+          <div></div>
+          <div>
+            <p class="text-[15px] text-body leading-[1.7] mb-[50px]">Maintain consistent open-state behavior across surfaces</p>
+          </div>
+        </div>
+        <div class="mb-12">
+          <img src="images/persistent-conversation/open-panels-behavior.png" alt="Open panels behavior" class="w-full block rounded-2xl lightbox-img">
+        </div>
+
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4" style="margin-top: -20px;">
+          <div></div>
+          <div>
+            <p class="text-[15px] text-body leading-[1.7] mb-[50px]">Persistent Gemini conversations across Workspace products</p>
+          </div>
+        </div>
+        <div>
+          <img src="images/persistent-conversation/cross-prod-flow.gif" alt="Cross-product Gemini conversation flow" class="w-full block rounded-2xl lightbox-img" style="clip-path: inset(0 0 1px 0);">
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== OUTCOME & NEXT STEPS ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4 mt-16">
+      <div>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Outcome & Next Steps</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Initial Launch</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Drive introduced persistent conversations within the file viewer, enabling continuity when users cycle through files. This established the foundation for a more assistant-like experience within a single product surface.</p>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Next Steps</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">To extend this model across Workspace, we identified a key dependency:</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3"><strong>Cross-product conversation history</strong></p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Supporting shared conversation history across products (e.g. Gmail, Drive, Docs, Sheets) has now been prioritized as a direct result of this work.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Once this foundation is in place, we will:</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Introduce persistent conversations across Workspace</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Enable seamless, cross-product workflows with a single continuous conversation</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Fully realize Gemini as a system-level assistant that follows users across their work</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center px-[30px] pt-20 pb-10">
+    <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
+      <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
+      <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>
+      <a href="workspace-pdf.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace PDF</a>
+      <a href="lemonaid-pims.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid PIMS</a>
+      <a href="persistent-conversations.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Persistent Conversations</a>
+    </nav>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+  <script>
+    const overlay = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.lightbox-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay || e.target.closest('.lightbox-close')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>
