@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Drive Viewing Information Architecture — Emily Thomas</title>
+  <link rel="stylesheet" href="transitions.css">
+  <script src="transitions.js"></script>
+  <link rel="expect" href="#content" blocking="render">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400..700;1,400..700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#c799d1',
+            body: '#333',
+            muted: '#8b8989',
+            divider: '#e0e0e0',
+          },
+          fontFamily: {
+            sans: ['Google Sans Text', 'Google Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            heading: ['Google Sans', 'system-ui', 'sans-serif'],
+            serif: ['Google Sans', 'system-ui', 'sans-serif'],
+            nav: ['Google Sans', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    html {
+      scroll-behavior: smooth;
+    }
+    @layer base {
+      body {
+        @apply font-sans text-[15px] text-muted bg-white antialiased;
+      }
+    }
+  </style>
+  <style>
+    .lightbox-img { cursor: pointer; }
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+    .lightbox-close svg { width: 20px; height: 20px; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .hero-text { animation: fadeUp 0.8s ease-out 0.35s both; }
+    .hero-image { animation: fadeRight 0.8s ease-out 0.55s both; }
+  </style>
+</head>
+<body>
+
+  <!-- Full-Screen Hero -->
+  <section data-hero class="min-h-screen relative flex flex-col overflow-hidden" style="background: linear-gradient(135deg, #B8E1D3, #A9C7FA);">
+    <!-- Nav -->
+    <header class="relative z-10 flex justify-between items-center px-[60px] py-[50px] max-md:px-5 max-md:py-[30px]">
+      <a href="index.html" class="font-heading text-[13px] font-bold text-black no-underline">Emily Thomas</a>
+      <div class="flex items-center">
+        <nav class="max-md:hidden">
+          <a href="index.html" class="font-heading text-[13px] font-semibold text-black no-underline ml-[30px] hover:opacity-60">Work</a>
+          <a href="about.html" class="font-heading text-[13px] font-semibold text-black no-underline ml-[30px] hover:opacity-60">About me</a>
+          <a href="mailto:emily@emjoydesign.com" class="font-heading text-[13px] font-semibold text-black no-underline ml-[30px] border border-black rounded-full px-[16px] py-[8px] hover:opacity-60">Say hi</a>
+        </nav>
+        <!-- Mobile hamburger -->
+        <button class="hidden max-md:block" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <!-- Close: back to the homepage -->
+        <a href="index.html" data-close aria-label="Close and go back to the homepage" class="flex items-center justify-center w-[34px] h-[34px] ml-[10px] max-md:ml-4 border border-black rounded-full hover:opacity-60">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+        </a>
+      </div>
+    </header>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-[60] flex flex-col px-5 py-[30px]">
+      <div class="flex justify-between items-center mb-10">
+        <a href="index.html" class="font-heading text-[13px] font-bold text-[#222] no-underline">Emily Thomas</a>
+        <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Close menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+        </button>
+      </div>
+      <a href="index.html" class="font-heading text-[24px] font-semibold text-[#222] no-underline mb-6">Work</a>
+      <a href="about.html" class="font-heading text-[24px] font-semibold text-[#222] no-underline mb-6">About me</a>
+      <a href="mailto:emily@emjoydesign.com" class="font-heading text-[24px] font-semibold text-[#222] no-underline mb-6">Say hi</a>
+    </div>
+    <!-- Hero Content -->
+    <div class="relative z-10 flex-1 flex items-center">
+      <div class="w-full flex items-center">
+        <!-- Text -->
+        <div class="hero-text pl-[30px] max-md:px-5 w-[40%] max-md:w-full shrink-0" style="margin-left: max(0px, calc((100vw - 1100px) / 2));">
+          <img src="images/drive-genai-organize/google-logo.png" alt="Google" class="h-[26px] w-auto mb-5 brightness-0">
+          <h1 class="font-nav text-[48px] font-bold text-black leading-[1.15] mb-6 max-md:text-[36px]">Drive Viewing Information Architecture</h1>
+          <p class="text-[15px] text-black leading-[1.7] mb-6">As the Drive View UX Lead, I <strong>transformed the legacy Workspace file view into a consumption platform.</strong> While Workspace is primarily known for its file editors, 87% of files viewed are actually third-party file types—such as PDFs, images, and videos. Leading the design direction for a multidisciplinary team, <strong class="text-black">I established a scalable information architecture and launched 14 features that drove a 20% increase in CSAT across 1.7B weekly views,</strong> reframing Drive from a passive activity into an interactive, intelligent workspace.</p>
+        </div>
+        <!-- Hero Product Screenshot -->
+        <div class="hero-image max-md:hidden flex-1 pl-16 -mr-[10%]">
+          <img data-hero-img src="images/workspace-pdf/ia-framework.png" alt="Drive file viewer header with the file menus and toolbar called out" class="w-full block" style="filter: drop-shadow(0 8px 40px rgba(0,0,0,0.15));">
+        </div>
+      </div>
+    </div>
+    <!-- Scroll Arrow -->
+    <div class="relative z-10 pb-10 flex justify-center">
+      <a href="#content" class="text-black/60 hover:text-black transition-colors">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <main id="content" class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
+
+    <div class="pt-20 max-md:pt-10"></div>
+
+    <!-- ==================== CONTEXT ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Context</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Business Context</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Improving PDF and Video consumption became a core pillar of Drive's 2025 strategy, with a focus on delivering a <strong>first-class experience</strong>. The goal was to make Drive the platform of choice for PDF workflows—eliminating the need for third-party tools and enabling users to work more efficiently within a single ecosystem.</p>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Key Insights</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">While Workspace is best known for its native Editors, user behavior told a different story:</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>PDFs and Images are the top consumed file types in Workspace</strong></li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>1.7B weekly views across Drive</strong></li>
+          </ul>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Problems</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Despite their importance, the PDF, Video, and Images experience had remained largely unchanged for years.</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Users frequently had to leave Drive to fill forms, annotate, or edit PDFs</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Navigating PDFs and Video is complex</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Fragmented workflows created friction and exposed competitive gaps with specialized tools</li>
+          </ul>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Solution</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Led a multi-year modernization roadmap focused on closing the competitive gap and elevating the PDF, Video, and Image experience:</p>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Viewing improvements</strong></li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>PDF Form filling</strong></li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Editing and annotation</strong></li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2"><strong>Navigation</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PROCESS ==================== -->
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Process</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Information Architecture Framework</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">To accommodate a rapidly expanding roadmap, I designed a scalable information architecture framework. This system ensured new features could integrate seamlessly without disrupting the core user experience as the product evolved.</p>
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Taxonomy</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Defined taxonomy into categories and insert tools with a team card-sorting exercise.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Taxonomy chart: six toolbar categories, and the tools inside Insert -->
+    <div class="rounded-2xl bg-white p-8 mb-12 max-md:p-5">
+      <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-4">Categories</div>
+      <ul class="grid grid-cols-6 items-start gap-3 max-md:grid-cols-2">
+        <li class="rounded-xl bg-[#F1F4F9] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">Navigation</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Table of content</li><li>Thumbnail preview</li><li>Find in document</li><li>Page number</li></ul>
+        </li>
+        <li class="rounded-xl bg-[#F1F4F9] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">Executive actions</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Undo</li><li>Zoom</li><li>Insert pages</li><li>Rotate pages</li><li>Layout</li></ul>
+        </li>
+        <!-- Stretches so the arrow starts at its edge; on phones it moves last so it sits above the arrow -->
+        <li class="self-stretch rounded-xl bg-[#F1F4F9] p-4 max-md:order-last">
+          <p class="text-[14px] font-bold text-body mb-2">Insert</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Text</li><li>Signature</li><li>Shape</li><li>Lines</li><li>Highlight</li><li>Add comment</li><li>Free hand markup</li><li>Select annotation</li></ul>
+        </li>
+        <li class="rounded-xl bg-[#F1F4F9] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">Collaboration</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Add comment</li></ul>
+        </li>
+        <li class="rounded-xl bg-[#F1F4F9] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">GenAI</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Sidekick</li></ul>
+        </li>
+        <li class="rounded-xl bg-[#F1F4F9] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">File actions</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Download</li><li>Print</li><li>Save</li><li>Share</li><li>Comments</li></ul>
+        </li>
+      </ul>
+
+      <!-- The arrow drops from Insert onto a line spanning all the Insert tools -->
+      <div class="grid grid-cols-6 items-end gap-x-3 max-md:grid-cols-2">
+        <div class="col-span-2 font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted pb-3 max-md:col-span-1">Insert tools</div>
+        <div aria-hidden="true" class="col-start-3 flex flex-col items-center max-md:col-start-2">
+          <span class="h-10 w-[2px] bg-[#7BAAF7]"></span>
+          <svg viewBox="0 0 12 8" class="w-3 -mt-px fill-[#7BAAF7]"><path d="M0 0h12L6 8z"/></svg>
+        </div>
+      </div>
+      <div aria-hidden="true" class="h-[2px] rounded-full bg-[#7BAAF7] mb-3"></div>
+
+      <ul class="grid grid-cols-6 items-start gap-3 max-md:grid-cols-2">
+        <li class="rounded-xl border border-[#D3E3FD] bg-[#EEF4FE] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">Text</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Font</li><li>Size</li><li>Bold</li><li>Italic</li><li>Underline</li><li>Strikethrough</li><li>Paragraph</li><li>Color</li></ul>
+        </li>
+        <li class="rounded-xl border border-[#D3E3FD] bg-[#EEF4FE] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">Signature</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Signature</li><li>Initials</li></ul>
+        </li>
+        <li class="rounded-xl border border-[#D3E3FD] bg-[#EEF4FE] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">Shape</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Shape</li><li>Color</li></ul>
+        </li>
+        <li class="rounded-xl border border-[#D3E3FD] bg-[#EEF4FE] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">Line</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Thickness</li><li>Color</li></ul>
+        </li>
+        <li class="rounded-xl border border-[#D3E3FD] bg-[#EEF4FE] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">Highlight</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Color</li></ul>
+        </li>
+        <li class="rounded-xl border border-[#D3E3FD] bg-[#EEF4FE] p-4">
+          <p class="text-[14px] font-bold text-body mb-2">Free hand markup</p>
+          <ul class="text-[13px] text-[#555] leading-[1.7]"><li>Line type</li><li>Color</li></ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div></div>
+      <div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Strategic Placement</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Leveraging Workspace precedents for navigation and collaboration; focusing design optimization strictly on viewing and markup toolbar positioning.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategic placement: three candidate positions for the viewing and markup toolbars -->
+    <div class="grid grid-cols-3 gap-4 mb-12 text-[11px] leading-[1.3] text-body max-lg:grid-cols-1">
+      <div role="img" aria-label="Layout 1: file name and actions across the top, a full-width markup and viewing toolbar below it, then file navigation, the PDF, and workflow collaboration in three columns" class="grid grid-cols-[1fr_3fr_1fr] grid-rows-[auto_auto_1fr] gap-1.5 aspect-[3/2] rounded-2xl bg-white p-1.5 [&>*]:rounded-[10px] [&>*]:p-2 max-lg:aspect-auto max-lg:h-[240px]">
+        <div class="col-span-3 bg-[#C5EED0]">File name &amp; action</div>
+        <div class="col-span-3 bg-[#D3E3FD]">Markup &amp; viewing tools</div>
+        <div class="bg-[#FADEDC]">File navigation</div>
+        <div class="bg-[#C5C7C5]">PDF</div>
+        <div class="bg-[#FFE5C9]">Workflow collaboration</div>
+      </div>
+      <!-- Side panels run full height; the toolbars sit above and below the PDF -->
+      <div role="img" aria-label="Layout 2: file navigation and workflow collaboration run full height on either side, with the markup and viewing toolbar above the PDF and the viewing tools below it" class="grid grid-cols-[1fr_3fr_1fr] grid-rows-[auto_auto_1fr_auto] gap-1.5 aspect-[3/2] rounded-2xl bg-white p-1.5 [&>*]:rounded-[10px] [&>*]:p-2 max-lg:aspect-auto max-lg:h-[240px]">
+        <div class="col-span-3 bg-[#C5EED0]">File name &amp; action</div>
+        <div class="row-span-3 bg-[#FADEDC]">File navigation</div>
+        <div class="bg-[#D3E3FD]">Markup &amp; viewing tools</div>
+        <div class="col-start-3 row-start-2 row-span-3 bg-[#FFE5C9]">Workflow collaboration</div>
+        <div class="bg-[#C5C7C5]">PDF</div>
+        <div class="bg-[#CEBDFF]">Viewing tools</div>
+      </div>
+      <!-- Toolbars become vertical rails on the outer edges -->
+      <div role="img" aria-label="Layout 3: viewing tools in a vertical rail on the far left and markup tools in a vertical rail on the far right, with file navigation, the PDF, and workflow collaboration between them" class="grid grid-cols-[22px_1fr_2.4fr_1fr_22px] grid-rows-[auto_1fr] gap-1.5 aspect-[3/2] rounded-2xl bg-white p-1.5 [&>*]:rounded-[10px] [&>*]:p-2 max-lg:aspect-auto max-lg:h-[240px]">
+        <div class="col-span-5 bg-[#C5EED0]">File name &amp; action</div>
+        <div class="flex items-center justify-center bg-[#CEBDFF] [writing-mode:vertical-rl] rotate-180">Viewing tools</div>
+        <div class="bg-[#FADEDC]">File navigation</div>
+        <div class="bg-[#C5C7C5]">PDF</div>
+        <div class="bg-[#FFE5C9]">Workflow collaboration</div>
+        <div class="flex items-center justify-center bg-[#D3E3FD] [writing-mode:vertical-rl] rotate-180">Mark up tools</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div></div>
+      <div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Workspace Alignment Session</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">I organized an information architecture alignment session with the Google Slides team, who were also updating their IA, to define a unified Workspace strategy. We explored two directions:</p>
+          <ol class="list-decimal pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Align with Editors to ensure cross-product consistency (Moved forward with this direction)</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Create a new system for third-party files using modern Google Material 3 patterns</li>
+          </ol>
+          <p class="text-[15px] text-body leading-[1.7] mb-3"><em>While I felt the Editor toolbar was dense and dated,</em> leadership chose alignment with Editors for cross-product consistency.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex mb-3">
+      <p class="text-[13px] text-[#555]">Option 1 - Align with Editors</p>
+      <p class="text-[13px] text-[#555]" style="margin-left: calc(50% - 110px);">Option 2 - Create a new system</p>
+    </div>
+    <div>
+      <img src="images/workspace-pdf/ia-options.png" alt="IA options" class="w-full block rounded-2xl lightbox-img">
+    </div>
+      </div>
+    </div>
+
+    <!-- ==================== DEFINED PRINCIPLES ==================== -->
+    <div class="pt-4">
+      <div>
+
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+          <div>
+            <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Defined Principles</h2>
+          </div>
+          <div class="pt-[18px] max-md:pt-0">
+            <div class="mb-10">
+              <p class="text-[15px] text-body leading-[1.7] mb-3">Established guiding principles to inform product decisions, align cross-functional teams, and ensure a consistent experience. These principles created a shared framework for evaluating tradeoffs, prioritizing features, and maintaining a cohesive user experience as the product evolved.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-8 mt-10 max-md:grid-cols-2 max-md:gap-6">
+          <div>
+            <div class="mb-5">
+              <svg width="80" height="80" viewBox="0 0 64 64" fill="none" stroke="#333" stroke-width="1.5">
+                <path d="M32 10 L52 50 L12 50 Z"/>
+                <path d="M26 38 L32 26 L38 38"/>
+              </svg>
+            </div>
+            <p class="text-[15px] font-bold text-body mb-2">Scalable</p>
+            <p class="text-[14px] text-muted leading-[1.6]">A flexible system that scales across other Drive Viewing file types and won't break with new features</p>
+          </div>
+          <div>
+            <div class="mb-5">
+              <svg width="80" height="80" viewBox="0 0 64 64" fill="none" stroke="#333" stroke-width="1.5">
+                <path d="M32 8 L52 32 L32 56 L12 32 Z"/>
+                <path d="M32 20 L42 32 L32 44 L22 32 Z"/>
+              </svg>
+            </div>
+            <p class="text-[15px] font-bold text-body mb-2">Progressive</p>
+            <p class="text-[14px] text-muted leading-[1.6]">Reveal options as the user dives deeper into workflows</p>
+          </div>
+          <div>
+            <div class="mb-5">
+              <svg width="80" height="80" viewBox="0 0 64 64" fill="none" stroke="#333" stroke-width="1.5">
+                <path d="M32 4 L48 14 L48 36 L32 46 L16 36 L16 14 Z"/>
+                <circle cx="32" cy="25" r="7"/>
+              </svg>
+            </div>
+            <p class="text-[15px] font-bold text-body mb-2">Contextual</p>
+            <p class="text-[14px] text-muted leading-[1.6]">Lean on AI to provide contextual nudges that allow the user to shortcut cumbersome tasks</p>
+          </div>
+          <div>
+            <div class="mb-5">
+              <svg width="80" height="80" viewBox="0 0 64 64" fill="none" stroke="#333" stroke-width="1.5">
+                <circle cx="32" cy="32" r="22"/>
+                <circle cx="32" cy="32" r="12"/>
+                <circle cx="32" cy="32" r="4"/>
+              </svg>
+            </div>
+            <p class="text-[15px] font-bold text-body mb-2">Familiar</p>
+            <p class="text-[14px] text-muted leading-[1.6]">It feels like an Editor so I don't have to think or relearn new patterns</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== UNIFIED NAVIGATION SYSTEM ==================== -->
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+    <div class="mb-10">
+      <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Two-part system</h2>
+    </div>
+
+    <div>
+      <img src="images/workspace-pdf/ia-framework.png" alt="IA framework for unified navigation" class="w-full block rounded-2xl lightbox-img">
+    </div>
+      </div>
+    </div>
+
+    <!-- ==================== TOOLBAR ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Toolbar Designs</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <p class="text-[15px] text-body leading-[1.7] mb-3">While building on the Editors toolbar pattern, I evolved it to align with Google Material 3's updated shape and toolbar guidelines, improving visual clarity and scannability. Partnering with Video and eSignature UX leads, I also drove design convergence across tools into a standardized system aligned with the Workspace design system and familiar user mental models.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <img src="images/workspace-pdf/Toolbar1.png" alt="Toolbar design" class="w-full block rounded-2xl lightbox-img">
+    </div>
+
+    <hr class="border-t border-divider my-12">
+
+    <div class="mb-12">
+      <p class="text-[13px] text-[#555] mb-3">Short-term toolbar</p>
+      <img src="images/workspace-pdf/toolbars-short-term.png" alt="Short-term toolbar design" class="w-full block rounded-2xl lightbox-img">
+    </div>
+    <div class="mb-12">
+      <p class="text-[13px] text-[#555] mb-3">Long-term toolbar</p>
+      <img src="images/workspace-pdf/toolbars-long term.png" alt="Long-term toolbar vision" class="w-full block rounded-2xl lightbox-img">
+    </div>
+    <div>
+      <p class="text-[13px] text-[#555] mb-3">In context</p>
+      <img src="images/workspace-pdf/short+term+pdf.png" alt="Short-term toolbar in the PDF viewer" class="w-full block rounded-2xl lightbox-img">
+    </div>
+
+    <!-- ==================== FILE MENUS ==================== -->
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">File Menus</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Problem</div>
+          <ul class="list-disc pl-5 mb-3">
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Actions aren't easily discoverable</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Missing features, like Make a copy</li>
+            <li class="text-[15px] text-body leading-[1.7] mb-2">Menus inconsistent across Overlay and Standalone file viewer</li>
+          </ul>
+        </div>
+        <div class="mb-10">
+          <img src="images/workspace-pdf/menu-issues.png" alt="File menu issues" class="w-full block rounded-2xl lightbox-img">
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">File menu audit</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Conducted a comprehensive audit of the File menu to identify inconsistencies across surfaces and file types, then established a unified taxonomy aligned with Editors — standardizing groupings, iconography, and keyboard shortcuts for a more predictable experience.</p>
+        </div>
+        <div class="mb-10">
+          <img src="images/workspace-pdf/Screenshot+2026-02-09+at+8.11.33 AM.png" alt="File menu audit" class="w-full block rounded-2xl lightbox-img">
+        </div>
+        <div class="mb-10">
+          <div class="font-heading text-[11px] font-bold tracking-[1.5px] uppercase text-muted mb-3">Utilized Drive's existing menu component</div>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">The Editors recently updated their file menus. To keep navigation familiar, we aligned with their IA, language, and icons.</p>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+
+    <!-- ==================== FILE MENU DESIGNS ==================== -->
+    <div class="mb-10">
+      <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">File Menu Designs</h2>
+    </div>
+    <div class="mb-12">
+      <img src="images/workspace-pdf/menus.png" alt="Drive menu component" class="w-full block rounded-2xl lightbox-img">
+    </div>
+    <div>
+      <img src="images/workspace-pdf/pdf-menu.gif" alt="PDF menu interaction" class="w-full block rounded-2xl lightbox-img">
+    </div>
+
+    <!-- ==================== OUTCOME ==================== -->
+    <div class="relative left-1/2 right-1/2 -ml-[50vw] w-screen bg-[#E9EEF6] py-16 my-12">
+      <div class="max-w-[1100px] mx-auto px-[30px]">
+        <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+          <div>
+            <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">Landing metrics</h2>
+          </div>
+          <div class="pt-[18px] max-md:pt-0">
+            <div class="mb-10">
+              <p class="text-[15px] text-body leading-[1.7] mb-3">Launched 14 features to close the competitive gap and established unified navigation framework across Drive's file view—impacts 1.7 billion weekly views.</p>
+              <ul class="list-disc pl-5 mb-3">
+                <li class="text-[15px] text-body leading-[1.7] mb-2">20% increase in CSAT: 74%</li>
+                <li class="text-[15px] text-body leading-[1.7] mb-2">7% decrease in DSAT: 12%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== WHAT I LEARNED ==================== -->
+    <div class="grid grid-cols-[1fr_2fr] gap-10 max-md:grid-cols-1 max-md:gap-4">
+      <div>
+        <h2 class="font-heading text-[36px] font-bold text-body leading-[1.15] max-md:text-[28px]">What I learned</h2>
+      </div>
+      <div class="pt-[18px] max-md:pt-0">
+        <div class="mb-10">
+          <p class="text-[15px] text-body leading-[1.7] mb-3">Defining clear product principles helped the team move faster and make more consistent decisions. They provided a shared framework for evaluating tradeoffs and kept design and engineering aligned as we delivered a large set of foundational features.</p>
+          <p class="text-[15px] text-body leading-[1.7] mb-3">This work reinforced that even when building standard capabilities, maintaining alignment across teams requires ongoing leadership and clarity of vision.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center px-[30px] pt-20 pb-10">
+    <nav class="flex flex-wrap justify-center gap-y-[10px] gap-x-6">
+      <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
+      <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>
+      <a href="workspace-pdf.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace PDF</a>
+      <a href="drive-viewing-ia.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive Viewing IA</a>
+      <a href="lemonaid-pims.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid PIMS</a>
+    </nav>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+  <script>
+    const overlay = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    document.querySelectorAll('.lightbox-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay || e.target.closest('.lightbox-close')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>
