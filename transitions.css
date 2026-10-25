@@ -1,0 +1,47 @@
+/* Page-to-page transitions. Every navigation cross-fades; transitions.js pairs a
+   homepage card with the project hero it opens, so the card grows to fill the
+   screen and its screenshot flies into place as the hero screenshot. */
+
+@view-transition { navigation: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Pages (and the header, when only one page has it in view) swap quickly underneath the growing card */
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation-duration: 0.35s;
+}
+
+/* Swap what's inside the box early in the move so the two screenshots don't ghost over each other */
+::view-transition-old(hero),
+::view-transition-new(hero),
+::view-transition-old(hero-img),
+::view-transition-new(hero-img) {
+  animation-duration: 0.25s;
+}
+
+/* Keep the header above the growing box (on the homepage it paints before the cards) */
+::view-transition-group(site-header) { z-index: 1; }
+
+/* The box clips its screenshot just like the card does while it grows */
+::view-transition-group(hero) { overflow: clip; }
+[data-hero-img] { view-transition-group: nearest; }
+
+/* Stretch both snapshots over the box as it changes shape (4:3 card ↔ full-screen hero) */
+::view-transition-old(hero),
+::view-transition-new(hero) {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The flying card screenshot replaces the hero screenshot's slide-in */
+.from-card .hero-image { animation: none; }

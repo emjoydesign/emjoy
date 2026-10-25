@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <meta name="view-transition" content="same-origin">
   <title>About Me — Emily Thomas</title>
+  <link rel="stylesheet" href="transitions.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Open+Sans:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400..700;1,400..700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -21,10 +21,10 @@
             divider: '#e0e0e0',
           },
           fontFamily: {
-            sans: ['proxima-nova', 'Proxima Nova', 'system-ui', '-apple-system', 'sans-serif'],
-            heading: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
-            serif: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
-            nav: ['proxima-nova', 'Proxima Nova', 'sans-serif'],
+            sans: ['Google Sans Text', 'Google Sans', 'system-ui', '-apple-system', 'sans-serif'],
+            heading: ['Google Sans', 'system-ui', 'sans-serif'],
+            serif: ['Google Sans', 'system-ui', 'sans-serif'],
+            nav: ['Google Sans', 'system-ui', 'sans-serif'],
           },
         },
       },
@@ -42,29 +42,33 @@
 
   <!-- Nav -->
   <header class="flex justify-between items-center px-[60px] py-[50px] sticky top-0 bg-white z-50 max-md:px-5 max-md:py-[30px]">
-    <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
-    <!-- Desktop nav -->
-    <nav class="max-md:hidden">
-      <a href="index.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
-      <a href="about.html" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] hover:opacity-60">About Me</a>
-      <a href="mailto:emily@emjoydesign.com" class="font-heading text-[13px] font-semibold tracking-[0.5px] uppercase text-[#222] no-underline ml-[30px] border border-black rounded-full px-[16px] py-[8px] hover:opacity-60">Say Hi</a>
-    </nav>
-    <!-- Mobile hamburger -->
-    <button class="hidden max-md:block" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
+    <a href="index.html" class="font-heading text-[13px] font-bold text-[#222] no-underline">Emily Thomas</a>
+    <div class="flex items-center">
+      <!-- Desktop nav -->
+      <nav class="max-md:hidden">
+        <a href="index.html" class="font-heading text-[13px] font-semibold text-[#222] no-underline ml-[30px] hover:opacity-60">Work</a>
+        <a href="about.html" class="font-heading text-[13px] font-semibold text-[#222] no-underline ml-[30px] hover:opacity-60">About me</a>
+        <a href="mailto:emily@emjoydesign.com" class="font-heading text-[13px] font-semibold text-[#222] no-underline ml-[30px] border border-black rounded-full px-[16px] py-[8px] hover:opacity-60">Say hi</a>
+      </nav>
+      <!-- Mobile hamburger -->
+      <button class="hidden max-md:block" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <!-- Empty slot where case studies show the close (×) button, so the nav lines up on every page -->
+      <span class="w-[34px] h-[34px] ml-[10px] max-md:ml-4" aria-hidden="true"></span>
+    </div>
   </header>
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-[60] flex flex-col px-5 py-[30px]">
     <div class="flex justify-between items-center mb-10">
-      <a href="index.html" class="font-heading text-[13px] font-bold tracking-[1.3px] uppercase text-[#222] no-underline">Emily Thomas</a>
+      <a href="index.html" class="font-heading text-[13px] font-bold text-[#222] no-underline">Emily Thomas</a>
       <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Close menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
       </button>
     </div>
-    <a href="index.html" class="font-heading text-[24px] font-semibold uppercase text-[#222] no-underline mb-6">Work</a>
-    <a href="about.html" class="font-heading text-[24px] font-semibold uppercase text-[#222] no-underline mb-6">About Me</a>
-    <a href="mailto:emily@emjoydesign.com" class="font-heading text-[24px] font-semibold uppercase text-[#222] no-underline mb-6">Say Hi</a>
+    <a href="index.html" class="font-heading text-[24px] font-semibold text-[#222] no-underline mb-6">Work</a>
+    <a href="about.html" class="font-heading text-[24px] font-semibold text-[#222] no-underline mb-6">About me</a>
+    <a href="mailto:emily@emjoydesign.com" class="font-heading text-[24px] font-semibold text-[#222] no-underline mb-6">Say hi</a>
   </div>
 
   <main class="max-w-[1100px] mx-auto px-[30px] pb-[100px] max-md:px-5 max-md:pb-[60px]">
@@ -108,6 +112,7 @@
       <a href="drive-genai-organize.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive GenAI Organize</a>
       <a href="workspace-video-player.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace Video Player</a>
       <a href="workspace-pdf.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Workspace PDF</a>
+      <a href="drive-viewing-ia.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Drive Viewing IA</a>
       <a href="lemonaid-pims.html" class="font-nav text-[13px] font-bold tracking-[1px] uppercase text-[#222] no-underline hover:opacity-60">Lemonaid PIMS</a>
     </nav>
   </footer>
